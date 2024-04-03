@@ -5,21 +5,12 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
-
+import { useSwapi } from "react-swapi";
+import { SwApiApp } from "../components/SwApiApp"
 
 const IndexPage = () => (
   <Layout>
-    <div className={styles.textCenter}>
-      <h1>
-        h1Message
-      </h1>
-      <p className={styles.intro}>
-        intro p
-      </p>
-    </div>
-    <ul className={styles.list}>
-      list style
-    </ul>
+    <SwApiApp></SwApiApp>
   </Layout>
 )
 

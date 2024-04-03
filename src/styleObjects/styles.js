@@ -1,5 +1,6 @@
 import * as styles from "../components/index.module.css"
 import * as React from "react"
+import Layout from "../components/layout"
 
 // random styles that were all over the project that were annoying me.
 
@@ -42,3 +43,17 @@ const footerStyle = {
 const dateCopyRight = <>© {new Date().getFullYear()} &middot; Built with
   <a href="https://www.gatsbyjs.com">Gatsby</a></>
 
+const defaultIndexLayout = () =>
+  <Layout>
+    <div className={styles.textCenter}>
+      <h1>
+        h1Message
+      </h1>
+      <p className={styles.intro}>
+        intro p
+      </p>
+    </div>
+    <ul className={styles.list}>
+      list style
+    </ul>
+  </Layout>

@@ -9,10 +9,10 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Star Wars Character Card Coding Test`,
+    description: `Displays a list of Character Cards using the SW:API.`,
+    author: `@elevati0n`,
+    siteUrl: `https://starwars-characters-wiw.netlify.app/`,
   },
   // plugins: [
   //   `gatsby-plugin-image`,
@@ -26,6 +26,7 @@ module.exports = {
   //   `gatsby-transformer-sharp`,
   //   `gatsby-plugin-sharp`,
   //   {
+  //     // this is for favicons
   //     resolve: `gatsby-plugin-manifest`,
   //     options: {
   //       name: `gatsby-starter-default`,

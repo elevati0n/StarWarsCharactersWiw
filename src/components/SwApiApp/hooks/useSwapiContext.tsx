@@ -76,7 +76,7 @@ export const useSwapiContext = () => {
   },[])
 
 return {
-  useCharacterList: swRepo?.people?.length? usePeopleList: useInitPeopleList,
+  useCharacterList: swRepo?.people?.list?.length? usePeopleList: useInitPeopleList,
   hooks: {
       useSwapiPersonByName,
       useSwapiPersonById,

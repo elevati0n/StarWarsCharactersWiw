@@ -10,11 +10,12 @@ const useSwapiResource = ({ resource = "", options = {} }) => {
   return useSwapi(resource, options)
 }
 
-const transformPeopleDataToCharacter = (data: any) => {
+// @ts-ignore
+const transformPeopleDataToCharacter = (data: any, swRepo) => {
   // message containing list of characters (or error or nothing)
   // we want Character Types for the Card
-  console.dir(data)
-  return
+  console.dir(data, swRepo)
+  return data
 }
 
 export const useSwapiContext = () => {
@@ -47,7 +48,7 @@ export const useSwapiContext = () => {
 
   const useInitPeopleList = () => {
     const { data } = useSwapiPeopleOptions()
-    swRepo.people = transformPeopleDataToCharacter(data)
+    swRepo.people.updatePeopleList(transformPeopleDataToCharacter(data, swRepo))
     return data
   }
 

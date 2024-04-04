@@ -17,12 +17,10 @@ export default class SWCatalog {
 
   updatePeopleList(people: Array<People>) {
     this.people = people
-    return this
   }
 
   addPersonByName(name: string, data: any) {
     this.people[this.characterNameToId[name]] = data
-    return this.asSwRepo()
   }
   getPersonByName(name: string) {
     return this.people[this.characterNameToId[name]]
@@ -34,9 +32,12 @@ export default class SWCatalog {
     return this.species
   }
   // use this method to store the catalog as an object suitable for useState
-  asSwRepo(): { films: any[]; species: any[]; repo: any; homeworlds: any[]; people: Array<People> } {
+  // ts-ignore
+
+  // ts-ignore
+  asSwRepo() {
     return {
-      people: this.people,
+      people: { list: this.people, methods: { updatePeopleList: this.updatePeopleList}},
       homeworlds: this.homeworlds,
       films: this.films,
       species: this.species,

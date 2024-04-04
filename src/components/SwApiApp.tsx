@@ -44,9 +44,14 @@ export const SwApiApp = () => {
 
   return (
     <SwApiContext.Provider value={localData}>
+      {error ?
+        <p>error: {error}</p>: null
+      }
+      {isLoading ?
+        <p>isLoading: LOOOOOADING!!</p>: null
+      }
       <p>data: {JSON.stringify(data)}</p>
-      <p>isLoading: {isLoading}</p>
-      <p>error: {error}</p>
+
     </SwApiContext.Provider>
 
   )

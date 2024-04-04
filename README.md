@@ -1,5 +1,22 @@
 # StarWarsCharactersWiw
 StarWars React App using API for WIW
+
+# Rate limiting
+
+Swapi has rate limiting to prevent malicious abuse
+(as if anyone would abuse Star Wars data!) and to make sure our service can
+handle a potentially large amount of traffic. Rate limiting is done via IP
+address and is currently limited to 10,000 API request per day. This is enough
+to request all the data on the website at least ten times over. There should
+be no reason for hitting the rate limit.
+Rate slowing
+
+Swapi now has rate slowing on top of the rate limiting.
+Rate slowing is also done via IP address and is currently set to slow by 100ms
+starting after the 5th API request within a 15 minute window. Each subsequent
+request will take longer to receieve a response for.
+
+# Start Kit Below
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">

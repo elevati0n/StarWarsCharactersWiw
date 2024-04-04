@@ -1,15 +1,9 @@
 // @ts-ignore
 import React, { createContext, useContext, useEffect, useState } from "react"
-import SWCatalog from "./dataStructures/SWCatalog"
-import { useSwapiPeopleOptions } from "./hooks/useSwapiResources"
-import { setState } from "gatsby/dist/utils/worker/child/state"
 //todo: make this read local storage to reduce network calls.
-const OK_RESPONSE = "ok"
+export const SwApiContext = createContext(new SWCatalog().asSwRepo())
 
-const checkForOkResponse = (data: any) => data && data?.message?.toLowerCase() === OK_RESPONSE
-// const sWCatalog =
-export const SwApiContext = createContext(new SWCatalog())
-
+import SWCatalog from "./dataStructures/SWCatalog"
 
 // @ts-ignore
 export const SwApiApp = ({children}) => {

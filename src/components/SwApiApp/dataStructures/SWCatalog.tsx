@@ -34,12 +34,13 @@ export default class SWCatalog {
     return this.species
   }
   // use this method to store the catalog as an object suitable for useState
-  asSwRepo(): { films: any[]; species: any[]; homeworlds: any[]; people: any[]} {
+  asSwRepo(): { films: any[]; species: any[]; repo: any; homeworlds: any[]; people: Array<People> } {
     return {
       people: this.people,
       homeworlds: this.homeworlds,
       films: this.films,
       species: this.species,
+      repo: this
     }
   }
 }

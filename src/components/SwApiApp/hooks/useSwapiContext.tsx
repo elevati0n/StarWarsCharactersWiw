@@ -4,13 +4,13 @@ import { FILMS, PEOPLE, PLANETS, SPECIES } from "../types/models--swapi-typescri
 import { useContext, useEffect, useState } from "react"
 import { SwApiContext } from "../SwApiApp"
 
+
 // we need to guard this because there is throttling and rate limiting.  also its better for network, etc to cache.
 const useSwapiResource = ({ resource = "", options = {} }) => {
   return useSwapi(resource, options)
 }
-const checkForOkResponse = (data: any) => data && data?.message?.toLowerCase() === OK_RESPONSE
 
-export const useSwapiRepo = () => {
+export const useSwapiContext = () => {
   const swRepo = useContext(SwApiContext)
   const [localCatalog, setLocalCatalog] = useState(SwApiContext)
 
@@ -38,7 +38,16 @@ export const useSwapiRepo = () => {
     return useSwapiResource({ resource: PEOPLE, options: { page, limit } })
   }
 
-useEffect(() => {
+  const useInitPeopleList = () => {
+    const { data } = useSwapiPeopleOptions()
+    return data
+  }
+
+  const usePeopleList = () => {
+    return swRepo.people
+  }
+
+  useEffect(() => {
     // @ts-ignore
     window.dataCatalog = swRepo
   }, [swRepo])
@@ -58,11 +67,14 @@ useEffect(() => {
   },[])
 
 return {
-    useSwapiPersonByName,
-    useSwapiPersonById,
-    useSwapiPlanetById,
-    useSwapiSpeciesById,
-    useSwapiFilmById,
-    useSwapiPeopleOptions
+  useCharacterList: swRepo?.people?.length? usePeopleList: useInitPeopleList,
+  hooks: {
+      useSwapiPersonByName,
+      useSwapiPersonById,
+      useSwapiPlanetById,
+      useSwapiSpeciesById,
+      useSwapiFilmById,
+      useSwapiPeopleOptions
+    }
   }
 }

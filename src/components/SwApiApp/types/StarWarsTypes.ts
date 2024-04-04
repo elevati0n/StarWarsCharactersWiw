@@ -1,3 +1,5 @@
+import { SW_API_TYPES } from "./models--swapi-typescript"
+const { PEOPLE, FILMS, PLANETS, SPECIES } = SW_API_TYPES
 /**
  * StarWarsCharacter
  * from https://swapi.tech/documentation#people
@@ -60,4 +62,3 @@ export interface CharacterCard {
   details: CharacterDetails,
   bonus: CharacterBonusDetails
 }
-

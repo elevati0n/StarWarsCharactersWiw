@@ -7,7 +7,6 @@ const CharacterCard = (character: CharacterCard) => {
   return <Card variant="outlined">
     <CardContent>
       {JSON.stringify(character)}
-
     </CardContent>
   </Card>
 }

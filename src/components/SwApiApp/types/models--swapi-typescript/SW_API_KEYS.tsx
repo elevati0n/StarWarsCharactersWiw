@@ -1,4 +1,4 @@
-const SW_API_KEYS = {
+export const SW_API_KEYS = {
   PLANETS: "planets",
   PEOPLE: "people",
   SPECIES: "species",

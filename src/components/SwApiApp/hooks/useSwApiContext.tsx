@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect } from "react"
 // @ts-ignore
 import { useSwapi } from "react-swapi"
-import { FILMS, PEOPLE, PLANETS, SPECIES } from "../enums/SW_API_KEYS"
+import { FILMS, PEOPLE, PLANETS, SPECIES } from "../types/models--swapi-typescript/SW_API_KEYS"
 import SWCatalog from "../dataStructures/SWCatalog"
-const SwApiContext = createContext({data: new SWCatalog()})
+import { SwApiContext } from "../SwApiApp"
 
-const useSwApiContext = () => {
-  const {data: swCatalog}= useContext(SwApiContext)
+export const useSwApiContext = () => {
+  const swRepo = useContext(SwApiContext)
 
   const useSwapiResource = ({ resource = "", options = {} }) => {
     return useSwapi(resource, options)
@@ -38,18 +38,19 @@ const useSwApiContext = () => {
 
   useEffect(() => {
     // @ts-ignore
-    window.dataCatalog = swCatalog
-  }, [swCatalog])
+    window.dataCatalog = swRepo
+  }, [swRepo])
 
   return {
-    getData: {
-      people: swCatalog.people,
-      homeworlds: swCatalog.homeworlds,
-      films: swCatalog.films,
-      species: swCatalog.species
-    },
-    useSwapiPeopleOptions
+    swRepo,
+    hooks: {
+      useSwapiResource,
+      useSwapiPersonByName,
+      useSwapiPersonById,
+      useSwapiPlanetById,
+      useSwapiSpeciesById,
+      useSwapiFilmById,
+      useSwapiPeopleOptions,
+    }
   }
 }
-
-export {SwApiContext, useSwApiContext}

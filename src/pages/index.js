@@ -3,12 +3,12 @@ import * as React from "react"
 import Layout from "../components/starterComponents/layout"
 import Seo from "../components/starterComponents/seo"
 import { SwApiApp } from "../components/SwApiApp/SwApiApp"
-import { CharacterCards } from "../components/SwApiApp/components/CharacterCards"
+import { CharacterCardGrid } from "../components/SwApiApp/components/CharacterCardGrid"
 
 const IndexPage = () => (
   <Layout>
     <SwApiApp>
-      <CharacterCards></CharacterCards>
+      <CharacterCardGrid/>
     </SwApiApp>
   </Layout>
 )

@@ -1,7 +1,7 @@
 // @ts-ignore
 import React, { createContext, useContext, useEffect, useState } from "react"
 //todo: make this read local storage to reduce network calls.
-export const SwApiContext = createContext(new SWCatalog().asSwRepo())
+export const SwApiContext = createContext(new SWCatalog())
 
 import SWCatalog from "./dataStructures/SWCatalog"
 

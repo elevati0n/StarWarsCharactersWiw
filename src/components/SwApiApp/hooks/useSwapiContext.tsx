@@ -11,15 +11,17 @@ const useSwapiResource = ({ resource = "", options = {} }) => {
 }
 
 // @ts-ignore
-const transformPeopleDataToCharacter = (data: any, swRepo) => {
+const transformPeopleDataToCharacter = (data: any) => {
   // message containing list of characters (or error or nothing)
   // we want Character Types for the Card
-  console.dir(data, swRepo)
+  console.dir(data)
   return data
 }
 
 export const useSwapiContext = () => {
-  const swRepo = useContext(SwApiContext)
+  const swCatalog = useContext(SwApiContext)
+  const swRepo = swCatalog.asSwRepo()
+  const { people: {updatePeopleList }} = swCatalog.getAccessMethods()
   const [localCatalog, setLocalCatalog] = useState(SwApiContext)
 
   const useSwapiPersonByName = (name = "") => {
@@ -48,7 +50,7 @@ export const useSwapiContext = () => {
 
   const useInitPeopleList = () => {
     const { data } = useSwapiPeopleOptions()
-    swRepo.people.methods.updatePeopleList(transformPeopleDataToCharacter(data, swRepo))
+    updatePeopleList(transformPeopleDataToCharacter(data))
     return data
   }
 
@@ -58,8 +60,10 @@ export const useSwapiContext = () => {
 
   useEffect(() => {
     // @ts-ignore
-    window.dataCatalog = swRepo
-  }, [swRepo])
+    window.dataCatalog = swCatalog
+    // @ts-ignore
+    window.swRepo = swRepo
+  }, [swCatalog, swRepo])
 
   useEffect(() => {
     // on initial load, look for data (in localstorage(not implemented))
@@ -76,7 +80,7 @@ export const useSwapiContext = () => {
   },[])
 
 return {
-  useCharacterList: swRepo?.people?.list?.length? usePeopleList: useInitPeopleList,
+  useCharacterList: swRepo?.people?.length? usePeopleList: useInitPeopleList,
   hooks: {
       useSwapiPersonByName,
       useSwapiPersonById,

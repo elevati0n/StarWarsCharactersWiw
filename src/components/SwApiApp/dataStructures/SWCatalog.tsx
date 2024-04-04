@@ -37,11 +37,20 @@ export default class SWCatalog {
   // ts-ignore
   asSwRepo() {
     return {
-      people: { list: this.people, methods: { updatePeopleList: this.updatePeopleList}},
+      people: this.people,
       homeworlds: this.homeworlds,
       films: this.films,
       species: this.species,
       repo: this
+    }
+  }
+
+  getAccessMethods() {
+    return {
+      people: {
+        // need to bind this if we want to pass just update handle
+        updatePeopleList: this.updatePeopleList.bind(this)
+      }
     }
   }
 }

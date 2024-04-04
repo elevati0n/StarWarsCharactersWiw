@@ -48,7 +48,7 @@ export const useSwapiContext = () => {
 
   const useInitPeopleList = () => {
     const { data } = useSwapiPeopleOptions()
-    swRepo.people.updatePeopleList(transformPeopleDataToCharacter(data, swRepo))
+    swRepo.people.methods.updatePeopleList(transformPeopleDataToCharacter(data, swRepo))
     return data
   }
 

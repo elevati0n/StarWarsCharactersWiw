@@ -17,10 +17,25 @@ import {
 export const useSwApiContext = () => {
   const swRepo = useContext(SwApiContext)
 
+
   useEffect(() => {
     // @ts-ignore
     window.dataCatalog = swRepo
   }, [swRepo])
+
+  // useEffect(() => {
+  //   // on initial load, look for data (in localstorage(not implemented))
+  //   // console.dir(data)
+  //   //
+  //   setLocalCatalog((currentValue) => checkForOkResponse(data)?
+  //     localCatalog.updatePeopleList(data.results):
+  //     currentValue)
+  //
+  //   // window.localCatalog = localCatalog
+  //   // window.dataCurrent = data
+  //   // window.swRepo = swRepo
+  //
+  // },[data])
 
   return {
     swRepo,

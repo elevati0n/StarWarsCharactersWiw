@@ -17,7 +17,7 @@ export default class SWCatalog {
 
   updatePeopleList(people: Array<People>) {
     this.people = people
-    return this.asSwRepo()
+    return this
   }
 
   addPersonByName(name: string, data: any) {

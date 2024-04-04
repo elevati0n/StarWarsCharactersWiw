@@ -1,9 +1,10 @@
 import { useSwApiContext } from "../hooks/useSwApiContext"
 import * as React from "react"
+import { useSwapiPeopleOptions } from "../hooks/useSwapiResources"
+import { useEffect } from "react"
 
 export const CharacterCardGrid = () => {
   const { swRepo } = useSwApiContext()
-
-  return <div>{JSON.stringify(swRepo) ?? "No Data"}</div>
-
+  const { data } = useSwapiPeopleOptions()
+  return <div>{JSON.stringify(data) ?? "No Data"}</div>
 }

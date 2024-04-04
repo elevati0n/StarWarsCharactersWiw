@@ -1,5 +1,7 @@
+import People from "../types/models--swapi-typescript/People"
+
 export default class SWCatalog {
-  people: any[]
+  people: Array<People>
   homeworlds: any[]
   films: any[]
   species: any[]
@@ -12,9 +14,15 @@ export default class SWCatalog {
     this.species = []
     this.characterNameToId = {}
   }
+
+  updatePeopleList(people: Array<People>) {
+    this.people = people
+    return this.asSwRepo()
+  }
+
   addPersonByName(name: string, data: any) {
     this.people[this.characterNameToId[name]] = data
-    return this.people
+    return this.asSwRepo()
   }
   getPersonByName(name: string) {
     return this.people[this.characterNameToId[name]]

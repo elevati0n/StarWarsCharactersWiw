@@ -7,10 +7,11 @@ import { Species } from "./Species"
 
 import { FILMS, PEOPLE, PLANETS, SPECIES } from "./SW_API_KEYS"
 
-const SW_API_TYPES = {
+export const SW_API_TYPES = {
   BASE: {ResourceType, ResourceUrl, Resource},
   [PEOPLE]: People,
   [PLANETS]: Planets,
   [SPECIES]: Species,
-  [FILMS]: Film
+  [FILMS]: Film,
+  RESPONSE: PagedResult
 }

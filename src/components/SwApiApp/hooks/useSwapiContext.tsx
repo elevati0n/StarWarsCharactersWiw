@@ -27,21 +27,20 @@ const characterSummary = (data: any) => data && data?.name ? ({
 
 // @ts-ignore
 const transformPersonDataToCharacter = (data: any = {}) => {
+  console.dir({data})
   return {
     summary: characterSummary(data),
-    details: characterDetails(data)
+    details: characterDetails(data),
+    personData: data,
+    characterId: data.uid,
   }
 }
 
-const transformPeopleDataToCharacter = (data: any = {}) => {
-  if (!data?.results || !Array.isArray(data.results)) return []
-  return data.results.map((character: any) => transformPersonDataToCharacter(character))
-}
 
 
 export const useSwapiContext = () => {
   const swCatalog = useContext(SwApiContext)
-  const { people: {updatePeopleList, getPeopleList }} = swCatalog.getAccessMethods()
+  const {updatePeopleList, getPeopleList } = swCatalog.getAccessMethods()
   const [localCatalog, setLocalCatalog] = useState(SwApiContext)
 
   const useSwapiPersonByName = (name = "") => {
@@ -67,7 +66,14 @@ export const useSwapiContext = () => {
   const useSwapiPeopleOptions = ({ page = "", limit = "" } = { page: 1, limit: 500 }) => {
     return useSwapiResource({ resource: PEOPLE, options: { page, limit } })
   }
-
+  const transformPeopleDataToCharacter = (data: any = {}) => {
+    if (!data?.results || !Array.isArray(data.results)) return []
+    return data.results.map((personData: any) => {
+      const character= transformPersonDataToCharacter(personData)
+      swCatalog.getAccessMethods().addPerson({person: character})
+      return character
+    })
+  }
   const useInitPeopleList = () => {
     const { data } = useSwapiPeopleOptions()
     const transformedData = transformPeopleDataToCharacter(data)

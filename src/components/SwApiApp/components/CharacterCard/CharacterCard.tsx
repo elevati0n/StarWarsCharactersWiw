@@ -9,7 +9,7 @@ import "./index.css"
 export const CharacterCard = ({ character }) => {
   // flipped means its back side is up, showing details
   const [isFlipped, setIsFlipped] = useState(false)
-  const [isMoving, setIsMoving] = useState({moving: false, lastXAngle: 0})
+  // const [isMoving, setIsMoving] = useState({moving: false, lastXAngle: 0})
   return <Tilt
     className={"parallax-effect-glare-scale "}
     perspective={2000}

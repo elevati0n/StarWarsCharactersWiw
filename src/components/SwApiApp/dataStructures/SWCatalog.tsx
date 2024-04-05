@@ -5,14 +5,13 @@ export default class SWCatalog {
   homeworlds: any[]
   films: any[]
   species: any[]
-  characterNameToId: any
 
   constructor() {
     this.people = []
     this.homeworlds = []
     this.films = []
     this.species = []
-    this.characterNameToId = {}
+    //because we consume them in order, our arrays double as maps.
   }
 
   getPeopleList() {
@@ -23,12 +22,16 @@ export default class SWCatalog {
     this.people = people
   }
 
-  addPersonByName(name: string, data: any) {
-    this.people[this.characterNameToId[name]] = data
+  // @ts-ignore
+  addPerson({ person }) {
+    this.people[person.id] = person
   }
+
   getPersonByName(name: string) {
+    // @ts-ignore
     return this.people[this.characterNameToId[name]]
   }
+
   getHomeworld() {
     return this.homeworlds
   }
@@ -51,11 +54,10 @@ export default class SWCatalog {
 
   getAccessMethods() {
     return {
-      people: {
         // need to bind this if we want to pass just update handle
         getPeopleList: this.getPeopleList.bind(this),
-        updatePeopleList: this.updatePeopleList.bind(this)
-      }
+        updatePeopleList: this.updatePeopleList.bind(this),
+        addPerson: this.addPerson.bind(this)
     }
   }
 }

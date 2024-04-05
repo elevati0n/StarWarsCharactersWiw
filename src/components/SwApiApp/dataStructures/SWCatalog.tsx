@@ -15,6 +15,10 @@ export default class SWCatalog {
     this.characterNameToId = {}
   }
 
+  getPeopleList() {
+    return this.people
+  }
+
   updatePeopleList(people: Array<People>) {
     this.people = people
   }
@@ -49,6 +53,7 @@ export default class SWCatalog {
     return {
       people: {
         // need to bind this if we want to pass just update handle
+        getPeopleList: this.getPeopleList.bind(this),
         updatePeopleList: this.updatePeopleList.bind(this)
       }
     }

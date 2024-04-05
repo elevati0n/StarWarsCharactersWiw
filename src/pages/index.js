@@ -7,7 +7,7 @@ import { CharacterCardGrid } from "../components/SwApiApp/components/CharacterCa
 
 // Import the necessary styles, or include them another way with your build process
 import "react-star-wars-crawl/lib/index.css"
-import { IntroCrawl } from "./IntroCrawl"
+import { IntroCrawl } from "../components/SwApiApp/components/CrawlComponent/IntroCrawl"
 
 const IndexPage = () => (
   <Layout>

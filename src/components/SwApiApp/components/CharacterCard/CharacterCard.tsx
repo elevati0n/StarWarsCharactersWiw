@@ -21,8 +21,9 @@ export const CharacterCard = ({ character }) => {
     perspective={2000}
     glareEnable={true}
     glareMaxOpacity={0.55}
-    transitionSpeed={100}
+    transitionSpeed={9900}
     // makes it stay active, even if more than one (scaled)
+    scale={1.6}
     reset={true}
     tiltReverse={true}
     onEnter={() => setShowDetails(true)}

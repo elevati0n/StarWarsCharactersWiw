@@ -3,27 +3,30 @@
         top: 0;
         transform: rotateX(20deg)  translateZ(0);
     }
-    90% {
+    50% {
         top: -6000px;
         transform: rotateX(25deg) translateZ(-2500px);
-        opacity:100%;
     }
-    91% {
-        opacity:100%;
+    80% {
         top: 0;
-        transform: rotateX(0) translateZ(0) scaleY(1);
+        transform: rotateX(0) translateZ(0);
+    }
+    81%{
+        opacity: 0;
+    }
+    90% {
+        opacity:100%;
     }
     100% {
-        top:0;
         opacity:0;
-        z-index: -1;
-        transform: rotateX(0) translateZ(0) scaleY(0);
+        top:-40vh;
     }
 }
 .crawler {
-    top:0;
-    /*opacity:0;*/
+    top:-40vh;
+    opacity:1;
     /*height:0;*/
-    z-index: -1;
+    z-index: 6;
     position: absolute;
+    /*max-height: 300vh;*/
 }

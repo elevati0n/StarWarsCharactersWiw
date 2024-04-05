@@ -5,16 +5,16 @@
 import * as React from "react"
 import "../pages/layout.css"
 import { Container } from "@mui/material"
-import { IntroCrawl } from "./CrawlComponent/IntroCrawl"
+import { IntroCrawl } from "./SwApiApp/components/CrawlComponent/IntroCrawl"
 
 const Layout = ({ children }) => {
   return (
-    <div className={'background'}>
+    <main className={'main--layout'}>
       <IntroCrawl/>
       <Container className={"main-container"}>
         <main>{children}</main>
       </Container>
-    </div>
+    </main>
   )
 }
 

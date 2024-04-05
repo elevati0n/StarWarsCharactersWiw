@@ -15,7 +15,7 @@ export const IntroCrawl = () => {
     fade: {
       position: "relative",
       width: "100%",
-      minHeight: "60vh",
+      // minHeight: "60vh",
       top: "-25px",
       backgroundImage: "linear-gradient(0deg, transparent, black 75%)",
       zIndex: 1
@@ -37,8 +37,8 @@ export const IntroCrawl = () => {
     crawl: {
       position: "relative",
       top: "9999px",
-      transformOrigin: "50% 100%",
-      animation: "crawl 10s ease-in"
+      transformOrigin: "70% 100%",
+      animation: "crawl 5s ease-in"
     },
     title: {
       fontSize: "90%",

@@ -18,9 +18,9 @@ export const CharacterCardGrid = () => {
   return (
     <>
       <ActiveCardGrid/>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={{ xs: 0, md: 0 }} columns={{ xs: 16, sm: 16, md: 16 }}>
         {characterList.map((character, index) =>
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={16} sm={12} md={8} lg={6} key={index}>
             {/*<Item>*/}
               <CharacterCard character={character} />
             {/*</Item>*/}

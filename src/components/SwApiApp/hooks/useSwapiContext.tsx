@@ -10,11 +10,60 @@ const useSwapiResource = ({ resource = "", options = {} }) => {
   return useSwapi(resource, options)
 }
 
+const characterDetails = (data: any) => data && data?.name ? ({
+  name: data?.name,
+  // check units !!
+  heightInMeters: data?.height,
+  massInKg: data?.mass,
+  dateAddedToApiFormatted: data?.date,
+  // check this
+  numberOfFilmsIn: data?.films?.length,
+  birthYear: data?.birth_year
+}):{}
+
+const characterSummary = (data: any) => data && data?.name ? ({
+  name: data?.name,
+}):{}
+
 // @ts-ignore
-const transformPeopleDataToCharacter = (data: any) => {
+const transformPeopleDataToCharacter = (data: any = {}) => {
+  if (!data?.results) return {}
   // message containing list of characters (or error or nothing)
   // we want Character Types for the Card
-  console.dir(data)
+  /*
+
+export interface CharacterDetails {
+  name: "string",
+  heightInMeters: number, // check resolution
+  massInKg: number,
+  dateAddedToApiFormatted: Date,
+  numberOfFilmsIn: number,
+  birthYear: Date
+}
+
+export interface CharacterSummary {
+  name: string,
+  color: string,
+}
+
+export interface CharacterBonusDetails {
+  homeworld: HomeWorld,
+}
+
+export interface CharacterCard {
+  summary: CharacterSummary,
+  details: CharacterDetails,
+  bonus: CharacterBonusDetails
+}
+
+*/
+
+
+  console.dir(data?.results)
+
+  characterSummary(data.results[0])
+
+  console.dir(characterDetails(data.results[0]))
   return data
 }
 

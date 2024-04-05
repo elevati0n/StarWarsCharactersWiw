@@ -38,7 +38,7 @@ export const IntroCrawl = () => {
       position: "relative",
       top: "9999px",
       transformOrigin: "50% 100%",
-      animation: "crawl 40s ease-in-out"
+      animation: "crawl 25s ease-in-out"
     },
     title: {
       fontSize: "90%",
@@ -52,17 +52,9 @@ export const IntroCrawl = () => {
   }
   return (
     <section className={"intro-section"}>
-      <div className={"star-wars-intro"}>
-        <p className={"intro-text"}>
-          A few days ago, during...
-        </p>
-        <h2 className={"main-logo"}>
-          WHEN I WORK
-        </h2>
-      </div>
       <Crawl
-        title={<h1>WHEN I WORK INTERViEW STEP IV</h1>}
-        subTitle={<h2>Coding Challenge</h2>}
+        title={<h1>INTERVIEW IV</h1>}
+        subTitle={<h2>WHEN I WORK: The Coding Challenge</h2>}
         containerStyles={styles.container}
         textContainerStyles={styles.textContainer}
         crawlStyles={styles.crawl}

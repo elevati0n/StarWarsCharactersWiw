@@ -14,12 +14,14 @@
     81%{
         opacity: 0;
     }
-    90% {
+    82% {
+        top: 0;
         opacity:100%;
     }
     100% {
-        opacity:0;
-        top:-40vh;
+        top: 100px;
+        opacity:100%;
+        transform: scale3d(2.5, 2.5, 1) translateY(25vh)
     }
 }
 .crawler {

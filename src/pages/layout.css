@@ -1,0 +1,17 @@
+.background {
+    background-color: black;
+    position: relative;
+}
+.crawler {
+    position: absolute;
+    background-color: unset;
+}
+.main-container {
+    /*background-color: black;*/
+    position: relative;
+    z-index: 1;
+}
+
+.is-loading {
+    z-index:-1
+}

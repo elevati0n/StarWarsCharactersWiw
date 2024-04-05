@@ -10,21 +10,21 @@ export const IntroCrawl = () => {
       width: "100%",
       height: "100%",
       background: "#000",
-      overflow: "hidden"
+      overflow: "hidden",
+      zIndex: "0",
     },
     fade: {
-      position: "relative",
+      position: "absolute",
       width: "100%",
-      // minHeight: "60vh",
       top: "-25px",
       backgroundImage: "linear-gradient(0deg, transparent, black 75%)",
-      zIndex: 1
+      zIndex: "0"
     },
     textContainer: {
       display: "flex",
       justifyContent: "center",
       position: "relative",
-      height: "800px",
+      minHeight: "0",
       color: "#feda4a",
       fontFamily: "'Pathway Gothic One', sans-serif",
       fontSize: "500%",
@@ -32,13 +32,18 @@ export const IntroCrawl = () => {
       letterSpacing: "6px",
       lineHeight: "150%",
       perspective: "400px",
-      textAlign: "justify"
+      backgroundColor: "black",
+      background: "#000",
+      textAlign: "justify",
+      zIndex: 5,
     },
     crawl: {
-      position: "relative",
+      position: "absolute",
       top: "9999px",
-      transformOrigin: "70% 100%",
-      animation: "crawl 5s ease-in"
+      transformOrigin: "50% 100%",
+      animation: "crawl 5s ease-in",
+      minHeight: 0,
+      background: "#000",
     },
     title: {
       fontSize: "90%",
@@ -52,7 +57,7 @@ export const IntroCrawl = () => {
   }
 
   return <Crawl
-    title={<h1>WHEN I WORK INTERViEW STEP IV</h1>}
+    title={<h1>WHEN I WORK INTERVIEW STEP IV</h1>}
     subTitle={<h2>Coding Challenge</h2>}
     containerStyles={styles.container}
     textContainerStyles={styles.textContainer}
@@ -66,6 +71,8 @@ export const IntroCrawl = () => {
       <p>For every character, we’d like to display a card</p>
       <p>Challenges that use a code generator (ie. Code pilot, ChatGPT) to complete the
         challenge will NOT be accepted.</p>
+
+      <p>Loading...</p>
     </section>
   </Crawl>
 }

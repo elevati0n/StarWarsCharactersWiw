@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Layout from "../components/starterComponents/layout"
+import Layout from "../components/layout"
 import Seo from "../components/starterComponents/seo"
 import { SwApiApp } from "../components/SwApiApp/SwApiApp"
 import { CharacterCardGrid } from "../components/SwApiApp/components/CharacterCardGrid"
@@ -11,7 +11,6 @@ import { IntroCrawl } from "../components/CrawlComponent/IntroCrawl"
 
 const IndexPage = () => (
   <Layout>
-    <IntroCrawl/>
     <SwApiApp>
       <CharacterCardGrid/>
     </SwApiApp>

@@ -19,6 +19,7 @@
     "react-parallax-tilt": "^1.7.219",
     "react-star-wars-crawl": "^2.0.0",
     "react-swapi": "^1.0.1",
+    "swapi-ts": "^1.0.1",
     "swapi-typescript": "^0.0.2",
     "typescript": "^5.4.3"
   },

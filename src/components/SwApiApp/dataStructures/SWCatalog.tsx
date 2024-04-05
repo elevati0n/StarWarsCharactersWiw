@@ -24,13 +24,14 @@ export default class SWCatalog {
 
   // @ts-ignore
   addPerson({ person }) {
-    this.people[person.id] = person
+    // alert(JSON.stringify(person))
+    this.people[person.uid] = person
   }
 
-  getPersonByName(name: string) {
-    // @ts-ignore
-    return this.people[this.characterNameToId[name]]
-  }
+  // getPersonByName(name: string) {
+  //   // @ts-ignore
+  //   return this.people[this.characterNameToId[name]]
+  // }
 
   getHomeworld() {
     return this.homeworlds

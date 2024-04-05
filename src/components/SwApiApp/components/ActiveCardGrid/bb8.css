@@ -9,7 +9,8 @@
     padding-top: 100px;
     background-color: transparent;
     z-index: -1;
-    animation: zooming 10s ease-in-out infinite;
+    animation: zooming 20s ease-in-out infinite;
+    overflow: hidden;
 }
 .bb8 .head
 {

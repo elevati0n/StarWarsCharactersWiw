@@ -10,7 +10,7 @@ const useSwapiResource = ({ resource = "", options = {} }) => {
   return useSwapi(resource, options)
 }
 
-const characterDetails = (data: any) => data && data?.name ? ({
+export const extractCharacterDetails = (data: any) => data && data?.name ? ({
   name: data?.name,
   // check units !!
   heightInMeters: data?.height,
@@ -27,12 +27,8 @@ const characterSummary = (data: any) => data && data?.name ? ({
 
 // @ts-ignore
 const transformPersonDataToCharacter = (data: any = {}) => {
-  console.dir({data})
   return {
-    summary: characterSummary(data),
-    details: characterDetails(data),
-    personData: data,
-    characterId: data.uid,
+    ...data,
   }
 }
 
@@ -43,12 +39,26 @@ export const useSwapiContext = () => {
   const {updatePeopleList, getPeopleList } = swCatalog.getAccessMethods()
   const [localCatalog, setLocalCatalog] = useState(SwApiContext)
 
-  const useSwapiPersonByName = (name = "") => {
-    return useSwapiResource({ resource: PEOPLE, options: { name: name } })
+  // @ts-ignore
+  const useSwapiPersonByName = (name) => {
+    const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { name: name } })
+    console.dir(data)
+    if (data?.message === "ok") {
+      console.log(data?.result[0])
+      swCatalog.getAccessMethods().addPerson({
+        person: { ...swCatalog.people[data?.result[0].uid],  ...data?.result[0] } })
+      return data?.result[0]
+    }
   }
 
   const useSwapiPersonById = (id = "") => {
-    return useSwapiResource({ resource: PEOPLE, options: { id: id } })
+    const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { id } })
+    console.dir(data)
+    if (data?.message === "ok") {
+      console.log(data?.result[0])
+      swCatalog.getAccessMethods().addPerson({person: data?.result[0]})
+      return data?.result[0]
+    }
   }
 
   const useSwapiPlanetById = (id = "") => {
@@ -69,9 +79,8 @@ export const useSwapiContext = () => {
   const transformPeopleDataToCharacter = (data: any = {}) => {
     if (!data?.results || !Array.isArray(data.results)) return []
     return data.results.map((personData: any) => {
-      const character= transformPersonDataToCharacter(personData)
-      swCatalog.getAccessMethods().addPerson({person: character})
-      return character
+      swCatalog.getAccessMethods().addPerson({person: personData})
+      return personData
     })
   }
   const useInitPeopleList = () => {
@@ -90,20 +99,6 @@ export const useSwapiContext = () => {
     window.dataCatalog = swCatalog
     // @ts-ignore
   }, [swCatalog])
-
-  useEffect(() => {
-    // on initial load, look for data (in localstorage(not implemented))
-    // console.dir(data)
-    //
-    // setLocalCatalog((currentValue) => checkForOkResponse(data)?
-    //   swRepo.updatePeopleList(data.results):
-    //   currentValue)
-    //
-    // window.localCatalog = localCatalog
-    // window.dataCurrent = data
-    // window.swRepo = swRepo
-
-  },[])
 
 return {
   useCharacterList: swCatalog?.people?.length? usePeopleList: useInitPeopleList,

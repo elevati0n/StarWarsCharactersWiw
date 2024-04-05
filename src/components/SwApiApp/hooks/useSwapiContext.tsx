@@ -26,46 +26,18 @@ const characterSummary = (data: any) => data && data?.name ? ({
 }):{}
 
 // @ts-ignore
+const transformPersonDataToCharacter = (data: any = {}) => {
+  return {
+    summary: characterSummary(data),
+    details: characterDetails(data)
+  }
+}
+
 const transformPeopleDataToCharacter = (data: any = {}) => {
-  if (!data?.results) return {}
-  // message containing list of characters (or error or nothing)
-  // we want Character Types for the Card
-  /*
-
-export interface CharacterDetails {
-  name: "string",
-  heightInMeters: number, // check resolution
-  massInKg: number,
-  dateAddedToApiFormatted: Date,
-  numberOfFilmsIn: number,
-  birthYear: Date
+  if (!data?.results || !Array.isArray(data.results)) return []
+  return data.results.map((character: any) => transformPersonDataToCharacter(character))
 }
 
-export interface CharacterSummary {
-  name: string,
-  color: string,
-}
-
-export interface CharacterBonusDetails {
-  homeworld: HomeWorld,
-}
-
-export interface CharacterCard {
-  summary: CharacterSummary,
-  details: CharacterDetails,
-  bonus: CharacterBonusDetails
-}
-
-*/
-
-
-  console.dir(data?.results)
-
-  characterSummary(data.results[0])
-
-  console.dir(characterDetails(data.results[0]))
-  return data
-}
 
 export const useSwapiContext = () => {
   const swCatalog = useContext(SwApiContext)

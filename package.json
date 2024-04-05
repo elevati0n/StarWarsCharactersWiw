@@ -16,6 +16,7 @@
     "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-star-wars-crawl": "^2.0.0",
     "react-swapi": "^1.0.1",
     "swapi-typescript": "^0.0.2",
     "typescript": "^5.4.3"

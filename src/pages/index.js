@@ -5,8 +5,13 @@ import Seo from "../components/starterComponents/seo"
 import { SwApiApp } from "../components/SwApiApp/SwApiApp"
 import { CharacterCardGrid } from "../components/SwApiApp/components/CharacterCardGrid"
 
+// Import the necessary styles, or include them another way with your build process
+import "react-star-wars-crawl/lib/index.css"
+import { IntroCrawl } from "./IntroCrawl"
+
 const IndexPage = () => (
   <Layout>
+    <IntroCrawl/>
     <SwApiApp>
       <CharacterCardGrid/>
     </SwApiApp>

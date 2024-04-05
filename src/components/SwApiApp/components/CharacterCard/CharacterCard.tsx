@@ -21,8 +21,7 @@ export const CharacterCard = ({ character }) => {
     perspective={2000}
     glareEnable={true}
     glareMaxOpacity={0.55}
-    scale={1.45}
-    transitionSpeed={2500}
+    transitionSpeed={100}
     // makes it stay active, even if more than one (scaled)
     reset={true}
     tiltReverse={true}
@@ -31,8 +30,8 @@ export const CharacterCard = ({ character }) => {
     flipHorizontally={isFlipped}
   >
     <Card raised={true} className={"card-wrapper" + isFlipped? " is-flipped": ""}>
-      <CardContent className={"inner-element card-front"} >{character?.name}</CardContent>
-      {showDetails? <CardContent className={"inner-element card-back"}><pre>{JSON.stringify(characterDetails, null, 2)}</pre></CardContent>: null}
+      <CardHeader className={"inner-element card-front"} title={character?.name}/>
+      {showDetails? <CardContent className={"inner-element card-back"}><code>{JSON.stringify(characterDetails, null, 2)}</code></CardContent>: null}
     </Card>
   </Tilt>
 }

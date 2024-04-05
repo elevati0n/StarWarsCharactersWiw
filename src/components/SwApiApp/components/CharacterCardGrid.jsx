@@ -2,7 +2,7 @@ import * as React from "react"
 import { useSwapiContext } from "../hooks/useSwapiContext"
 //ts-ignore
 import { CharacterCard } from "./CharacterCard/CharacterCard"
-import { Container, Grid } from "@mui/material"
+import { Grid } from "@mui/material"
 import { ActiveCardGrid } from "./ActiveCardGrid/ActiveCardGrid"
 import { useEffect } from "react"
 

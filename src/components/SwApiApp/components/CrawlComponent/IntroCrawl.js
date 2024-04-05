@@ -18,7 +18,7 @@ export const IntroCrawl = () => {
       minHeight: "60vh",
       top: "-25px",
       backgroundImage: "linear-gradient(0deg, transparent, black 75%)",
-      zIndex: 1
+      zIndex: 0
     },
     textContainer: {
       display: "flex",
@@ -38,7 +38,7 @@ export const IntroCrawl = () => {
       position: "relative",
       top: "9999px",
       transformOrigin: "50% 100%",
-      animation: "crawl 25s ease-in-out"
+      animation: "crawl 45s ease-in-out"
     },
     title: {
       fontSize: "90%",
@@ -53,8 +53,8 @@ export const IntroCrawl = () => {
   return (
     <section className={"intro-section"}>
       <Crawl
-        title={<h1>INTERVIEW IV</h1>}
-        subTitle={<h2>WHEN I WORK: The Coding Challenge</h2>}
+        title={<h1>WHEN I WORK</h1>}
+        subTitle={<h2>The Coding Challenge</h2>}
         containerStyles={styles.container}
         textContainerStyles={styles.textContainer}
         crawlStyles={styles.crawl}

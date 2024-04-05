@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   return (
     <main className={'main--layout'}>
       <IntroCrawl/>
-      <Container className={"main-container"}>
+      <Container maxWidth={false} className={"main-container"}>
         <main>{children}</main>
       </Container>
     </main>

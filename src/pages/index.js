@@ -10,7 +10,7 @@ import { ActiveCardGrid } from "../components/SwApiApp/components/ActiveCardGrid
 
 import "./layout.css"
 const IndexPage = () => (
-  <Layout>
+  <Layout className={"box-assine"}>
     <SwApiApp>
       <ActiveCardGrid/>
       <CharacterCardGrid />

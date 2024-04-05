@@ -1,11 +1,11 @@
 .parallax-effect-glare-scale {
-    margin-bottom: 6rem;
+    margin: 6rem;
     background-color: #8169a7;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 300px;
+    /*width: 100%;*/
     height: 400px;
     color: black;
     border: 5px solid black;
@@ -22,34 +22,35 @@
     }
 }
 
-.tilt-img {
-    .inner-element {
-        width: 70vw;
-    }
-}
-
 @keyframes flipCard {
     0% {
         transform: rotateY(0deg);
     }
     100% {
         transform: rotateY(180deg);
+        /*top: 0;*/
+        /*left:0;*/
+        /*right:0;*/
+        /*margin: 0 auto;*/
+        /*position: absolute;*/
     }
 }
-
-.card-wrapper {
+.is-flipped {
     position: relative;
     transform-style: preserve-3d;
-    animation: cardFlip 3s ease-in-out infinite;
+    /*animation: flipCard 4s ease-in;*/
+    /*transform: rotateY(180deg);*/
+}
+.card-wrapper {
     /*width: 100px;*/
     /*height: 150px;*/
 }
 
 .card-front {
-    position: absolute;
+    /*position: absolute;*/
     backface-visibility: hidden;
 }
 
 .card-back {
-    transform: rotateY(180deg);
+    /*transform: rotateY(180deg);*/
 }

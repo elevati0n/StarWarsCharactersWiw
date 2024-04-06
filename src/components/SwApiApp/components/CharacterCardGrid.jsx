@@ -28,7 +28,6 @@ export const CharacterCardGrid = () => {
 
   return (
     <>
-      <ActiveCardGrid/>
       <Grid container spacing={{ xs: 0, md: 0 }} columns={{ xs: 16, sm: 16, md: 16 }}>
         {characterList.map((character, index) =>
           <Grid item xs={16} sm={12} md={8} lg={6} key={index}>

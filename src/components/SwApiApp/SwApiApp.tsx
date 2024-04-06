@@ -8,6 +8,7 @@ import SWCatalog from "./dataStructures/SWCatalog"
 // @ts-ignore
 export const SwApiApp = ({children}) => {
   // we need to store the data locally because it requires multiple calls.
+  
   const swCatalog = useContext(SwApiContext)
   // const [localCatalog, setLocalCatalog] = useState(new SWCatalog())
 

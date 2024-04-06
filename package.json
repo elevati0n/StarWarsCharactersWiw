@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.14",
     "gatsby": "^5.13.3",
+    "gatsby-plugin-google-tagmanager": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
@@ -21,7 +22,8 @@
     "react-swapi": "^1.0.1",
     "swapi-ts": "^1.0.1",
     "swapi-typescript": "^0.0.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "use-local-storage-state": "^19.2.0"
   },
   "devDependencies": {
     "prettier": "^2.8.8"

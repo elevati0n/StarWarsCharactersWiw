@@ -1,21 +1,10 @@
 import * as React from "react"
 
-import Layout from "../components/layout"
-import Seo from "../components/starterComponents/seo"
-import { SwApiApp } from "../components/SwApiApp/SwApiApp"
-import { CharacterCardGrid } from "../components/SwApiApp/components/CharacterCardGrid"
+import Layout from "../SwApiApp/layout/layout"
+import Seo from "../SwApiApp/starterComponents/seo"
 
-// Import the necessary styles, or include them another way with your build process
-import { ActiveCardGrid } from "../components/SwApiApp/components/ActiveCardGrid/ActiveCardGrid"
-
-import "./layout.css"
 const IndexPage = () => (
-  <Layout className={"box-assine"}>
-    <SwApiApp>
-      <ActiveCardGrid/>
-      <CharacterCardGrid />
-    </SwApiApp>
-  </Layout>
+  <Layout/>
 )
 
 /**

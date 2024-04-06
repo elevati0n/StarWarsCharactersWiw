@@ -2,8 +2,7 @@ import * as React from "react"
 import Crawl from 'react-star-wars-crawl'
 
 // Import the necessary styles, or include them another way with your build process
-import './index.css'
-
+// import './index.css'
 export const IntroCrawl = () => {
   const styles = {
     container: {

@@ -1,0 +1,7 @@
+.card {
+    box-shadow: -1rem 0 3rem #000;
+}
+
+.card:hover {
+    transform: translateY(-1rem);
+}

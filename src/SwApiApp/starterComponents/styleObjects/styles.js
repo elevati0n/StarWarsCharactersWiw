@@ -1,6 +1,6 @@
 import * as styles from "../index.module.css"
 import * as React from "react"
-import Layout from "../../layout"
+import Layout from "../../layout/layout"
 
 // random styles that were all over the project that were annoying me.
 

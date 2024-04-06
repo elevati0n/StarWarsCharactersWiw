@@ -42,9 +42,7 @@ export const useSwapiContext = () => {
   // @ts-ignore
   const useSwapiPersonByName = (name) => {
     const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { name: name } })
-    console.dir(data)
     if (data?.message === "ok") {
-      console.log(data?.result[0])
       swCatalog.getAccessMethods().addPerson({
         person: { ...swCatalog.people[data?.result[0].uid],  ...data?.result[0] } })
       return data?.result[0]
@@ -53,9 +51,7 @@ export const useSwapiContext = () => {
 
   const useSwapiPersonById = (id = "") => {
     const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { id } })
-    console.dir(data)
     if (data?.message === "ok") {
-      console.log(data?.result[0])
       swCatalog.getAccessMethods().addPerson({person: data?.result[0]})
       return data?.result[0]
     }

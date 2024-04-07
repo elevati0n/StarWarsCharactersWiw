@@ -13,6 +13,8 @@
     min-width: 220px;
     z-index:2;
     margin-bottom: 2.1rem;
+    margin-left: 1.5rem;
+    margin-right: -2.5rem;
 }
 
 .card-text {

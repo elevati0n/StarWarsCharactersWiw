@@ -2,15 +2,15 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    min-width: 20%;
     min-height:400px;
     padding: 1.5rem;
-    margin: 3rem;
+    margin: 0rem;
     border-radius: 16px;
     background: white;
     box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, .6);
     transition: .2s;
-    max-width: 200px;
+    max-width: 50vw;
+    min-width: 200px;
     z-index:2;
 }
 
@@ -37,13 +37,12 @@
 }
 
 .card-summary {
-    position: relative;
-    display: grid;
-    grid-template-columns: 75px 1fr;
-    align-items: center;
-    margin: 3rem 0 0;
+    /*position: relative;*/
+    /*display: grid;*/
+    /*grid-template-columns: 75px 1fr;*/
+    /*align-items: center;*/
+    /*margin: 3rem 0 0;*/
 }
-
 
 .half-circle {
     width: 60px;

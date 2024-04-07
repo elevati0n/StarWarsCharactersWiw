@@ -16,11 +16,13 @@ export const CharacterCardGrid = () => {
   },[characterList])
 
   return (
-    <Container fixed={true}>
+    <Container maxWidth={"xl"}>
     <section className={'card-list'}>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {characterList.map((character, index) =>
               <CharacterCard character={character} />
         )})
+      </Grid>
     </section>
     </Container>
   )

@@ -7,6 +7,7 @@ import "./index.css"
 import { extractCharacterDetails, useSwapiContext } from "../../hooks/useSwapiContext"
 
 import yaml from "yaml"
+import { Grid } from "@mui/material"
 // @ts-ignore
 export const CharacterCard = ({ character }) => {
   // flipped means its back side is up, showing details
@@ -17,6 +18,7 @@ export const CharacterCard = ({ character }) => {
   const { useSwapiPersonByName } = hooks
   const characterDetails = useSwapiPersonByName(character?.name)
   return (
+    <Grid item xs={2} sm={4} md={4}>
     <article className={"card"}>
       <header className="card-header">
         <h2 className={"card-summary"}>{character?.name}</h2>
@@ -32,5 +34,7 @@ export const CharacterCard = ({ character }) => {
       {/*  <a href="">See More</a>*/}
       {/*</small>*/}
     </article>
+    </Grid>
+
   )
 }

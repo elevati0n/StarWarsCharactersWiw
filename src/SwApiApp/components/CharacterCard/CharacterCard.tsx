@@ -15,8 +15,8 @@ export const CharacterCard = ({ character }) => {
   const [isFlipped, setIsFlipped] = useState(false)
   // const [isMoving, setIsMoving] = useState({moving: false, lastXAngle: 0})
   const { hooks } = useSwapiContext()
-  const { useSwapiPersonByName } = hooks
-  const characterDetails = useSwapiPersonByName(character?.name)
+  const { useSwapiPersonById } = hooks
+  const characterDetails = useSwapiPersonById(character?.uid)
   return (
     <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
     <Grid item xs={2} sm={4} md={4}>

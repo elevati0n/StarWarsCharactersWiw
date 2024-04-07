@@ -3,6 +3,7 @@ body {
     font-family: 'Roboto Condensed', Calibri, Arial, sans-serif;
     font-size: 0.9rem;
     font-weight: 300;
+    min-height: 100vh;
     background: linear-gradient(
             to top,
             #283e51,
@@ -84,6 +85,7 @@ body {
 }
 
 .swapi-app {
+    min-height: 100vh;
     background: linear-gradient(0deg, #283e51,
     #0a2342 95%, black);
     /*background:linear-gradient(*/

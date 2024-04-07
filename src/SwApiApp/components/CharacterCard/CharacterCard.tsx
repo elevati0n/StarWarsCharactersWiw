@@ -18,6 +18,7 @@ export const CharacterCard = ({ character }) => {
   const { useSwapiPersonByName } = hooks
   const characterDetails = useSwapiPersonByName(character?.name)
   return (
+    <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
     <Grid item xs={2} sm={4} md={4}>
     <article className={"card"}>
       <header className="card-header">
@@ -35,6 +36,7 @@ export const CharacterCard = ({ character }) => {
       {/*</small>*/}
     </article>
     </Grid>
+    </Tilt>
 
   )
 }

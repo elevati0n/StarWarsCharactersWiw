@@ -1,12 +1,12 @@
 .parallax-effect-glare-scale {
-    background-color: #ff7e00;
-    flex-direction: row;
-    display: flex;
-    height: 200px;
-    color: black;
-    max-width:20%;
-    border: 5px solid black;
-    border-radius: 20px;
+    /*background-color: #ff7e00;*/
+    /*flex-direction: row;*/
+    /*display: flex;*/
+    /*height: 200px;*/
+    /*color: black;*/
+    /*max-width:20%;*/
+    /*border: 5px solid black;*/
+    /*border-radius: 20px;*/
     transform-style: preserve-3d;
     .inner-element {
         width: 20%;

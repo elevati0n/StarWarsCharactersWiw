@@ -17,20 +17,6 @@ export const CharacterCard = ({ character }) => {
   const { useSwapiPersonByName } = hooks
   const characterDetails = useSwapiPersonByName(character?.name)
   return (
-  //   <Tilt
-  //   className={"parallax-effect-glare-scale "}
-  //   perspective={2000}
-  //   glareEnable={true}
-  //   glareMaxOpacity={0.55}
-  //   transitionSpeed={9900}
-  //   // makes it stay active, even if more than one (scaled)
-  //   scale={1.2}
-  //   reset={true}
-  //   tiltReverse={true}
-  //   onEnter={() => setShowDetails(true)}
-  //   onLeave={() => setShowDetails(false)}
-  //   flipHorizontally={isFlipped}
-  // >
     <article className={"card"}>
       <header className="card-header">
         <h2 className={"card-summary"}>{character?.name}</h2>
@@ -39,14 +25,12 @@ export const CharacterCard = ({ character }) => {
         </svg>
       </header>
 
-      <section className={"card-text"}>
-        <p>{yaml.stringify(characterDetails)}</p>
+      <section className={`card-text${showDetails? " show":""}`}>
+        <p>{showDetails? yaml.stringify(characterDetails): null}</p>
       </section>
       {/*<small className={"bonus"}>*/}
       {/*  <a href="">See More</a>*/}
       {/*</small>*/}
-
     </article>
-    // </Tilt>
   )
 }

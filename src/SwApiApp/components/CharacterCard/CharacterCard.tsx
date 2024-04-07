@@ -18,9 +18,10 @@ export const CharacterCard = ({ character }) => {
   const { useSwapiPersonById } = hooks
   const characterDetails = useSwapiPersonById(character?.uid)
   return (
-    <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
     <Grid item xs={2} sm={4} md={4}>
-    <article className={"card"}>
+      <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
+
+      <article className={"card"}>
       <header className="card-header">
         <h2 className={"card-summary"}>{character?.name}</h2>
         <svg className="half-circle" viewBox="0 0 106 57">
@@ -35,8 +36,8 @@ export const CharacterCard = ({ character }) => {
       {/*  <a href="">See More</a>*/}
       {/*</small>*/}
     </article>
-    </Grid>
     </Tilt>
+    </Grid>
 
   )
 }

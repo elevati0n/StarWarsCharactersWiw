@@ -11,16 +11,28 @@ import { indexColors } from "./indexColors"
 export const CharacterCard = ({ character }) => {
   // flipped means its back side is up, showing details
   const [showDetails, setShowDetails] = useState(true)
+  const [showBonus, setShowBonus] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
   // const [isMoving, setIsMoving] = useState({moving: false, lastXAngle: 0})
   const { hooks } = useSwapiContext()
-  const { useSwapiPersonById } = hooks
+  const { useSwapiPersonById, useSwapiPlanetById } = hooks
   const characterDetails = useSwapiPersonById(character?.uid)
   const [backgroundColor, setBackgroundColor] = useState(0)
+  const lookUpPlanet = useSwapiPlanetById()
+  const homeworld = lookUpPlanet(characterDetails?.homeworld)
+
 
   useEffect(() => {
     setBackgroundColor((currentValue) => characterDetails?.colorIndex ?? currentValue)
   }, [characterDetails])
+
+  useEffect(() => {
+  }, [characterDetails?.homeworld])
+
+  const handleClick = () => {
+    setShowBonus(current => !current)
+  }
+
 
   return (
     <Grid item xs={2} sm={4} md={4}>
@@ -36,9 +48,11 @@ export const CharacterCard = ({ character }) => {
       <section className={`card-text${showDetails? " show":""}`}>
         <p>{showDetails? yaml.stringify(characterDetails): null}</p>
       </section>
-      {/*<small className={"bonus"}>*/}
-      {/*  <a href="">See More</a>*/}
-      {/*</small>*/}
+        <a href="#" onClick={handleClick}>See Homeworld Data</a>
+        {showBonus?
+          <small className={"bonus"}>
+            {yaml.stringify(homeworld?.data)}
+          </small>:null}
     </article>
     </Tilt>
     </Grid>

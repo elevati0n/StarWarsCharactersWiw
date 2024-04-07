@@ -35,36 +35,23 @@ const transformPersonDataToCharacter = (data: any = {}) => {
   }
 }
 
-
-
 export const useSwapiContext = () => {
   const swCatalog = useContext(SwApiContext)
   const {updatePeopleList, getPeopleList } = swCatalog.getAccessMethods()
   const [localCatalog, setLocalCatalog] = useState(SwApiContext)
 
-  // @ts-ignore
-  const useSwapiPersonByName = (name) => {
-    const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { name: name } })
-    if (data?.message === "ok") {
-      swCatalog.getAccessMethods().addPerson({
-        person: { ...swCatalog.people[data?.result[0].uid],  ...data?.result[0] } })
-      console.log(data?.result[0])
-      return extractCharacterDetails(data?.result[0].properties)
-    }
-  }
-
   const useSwapiPersonById = (id = "") => {
     const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { id } })
-    console.log(data)
     if (data?.name) {
       swCatalog.getAccessMethods().addPerson({person: data})
       return extractCharacterDetails(data)
     }
   }
 
-  const useSwapiPlanetById = (id = "") => {
-    return useSwapiResource({ resource: PLANETS, options: { id: id } })
-  }
+  const useSwapiPlanetById = (id = "21") => () => id?
+      useSwapiResource({ resource: PLANETS, options: { id: id } }):
+      () => null
+
 
   const useSwapiSpeciesById = (id = "") => {
     return useSwapiResource({ resource: SPECIES, options: { id: id } })
@@ -104,7 +91,6 @@ export const useSwapiContext = () => {
 return {
   useCharacterList: swCatalog?.people?.length? usePeopleList: useInitPeopleList,
   hooks: {
-      useSwapiPersonByName,
       useSwapiPersonById,
       useSwapiPlanetById,
       useSwapiSpeciesById,

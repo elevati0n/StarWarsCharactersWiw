@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 import "./bb8.css"
 import "./index.css"
+// @ts-ignore
 const Bb8Button = ({onChange})=> {
   return (
     <div className={"bb8-button"}>

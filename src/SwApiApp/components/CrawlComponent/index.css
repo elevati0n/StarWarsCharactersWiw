@@ -26,8 +26,6 @@
 }
 .crawler {
     top:-30vh;
-    opacity:0;
-    /*height:0;*/
-    /*z-index: 12;*/
+    /*opacity:1;*/
     position: absolute;
 }

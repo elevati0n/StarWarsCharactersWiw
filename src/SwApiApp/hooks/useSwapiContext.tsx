@@ -1,21 +1,21 @@
 // @ts-ignore
-import { useSwapi } from "react-swapi"
+import useSwapi from "../react-swapi-dev/src/hooks/useSwapi"
+// @ts-ignore
 import { FILMS, PEOPLE, PLANETS, SPECIES } from "../types/models--swapi-typescript/SW_API_KEYS"
 import { useContext, useEffect, useState } from "react"
 import { SwApiContext } from "../SwApiApp"
-
-
+import { useSwapiPeopleList } from "./useSwapiPeopleList"
 // we need to guard this because there is throttling and rate limiting.  also its better for network, etc to cache.
 const useSwapiResource = ({ resource = "", options = {} }) => {
   return useSwapi(resource, options)
 }
 
-export const extractCharacterDetails = (data: any) => data && data?.name ? ({
+export const extractCharacterDetails = (data: any) => data ? ({
   name: data?.name,
   // check units !!
   heightInMeters: data?.height,
   massInKg: data?.mass,
-  dateAddedToApiFormatted: data?.date,
+  dateAddedToApiFormatted: data?.created,
   // check this
   numberOfFilmsIn: data?.films?.length,
   birthYear: data?.birth_year
@@ -45,12 +45,14 @@ export const useSwapiContext = () => {
     if (data?.message === "ok") {
       swCatalog.getAccessMethods().addPerson({
         person: { ...swCatalog.people[data?.result[0].uid],  ...data?.result[0] } })
-      return data?.result[0]
+      console.log(data?.result[0])
+      return extractCharacterDetails(data?.result[0].properties)
     }
   }
 
   const useSwapiPersonById = (id = "") => {
     const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { id } })
+    console.log(data)
     if (data?.message === "ok") {
       swCatalog.getAccessMethods().addPerson({person: data?.result[0]})
       return data?.result[0]
@@ -69,8 +71,8 @@ export const useSwapiContext = () => {
     return useSwapiResource({ resource: FILMS, options: { id: id } })
   }
 
-  const useSwapiPeopleOptions = ({ page = "", limit = "" } = { page: 1, limit: 500 }) => {
-    return useSwapiResource({ resource: PEOPLE, options: { page, limit } })
+  const useSwapiPeopleOptions = ({ page = "", limit = "" } = { page: 1, limit: 100 }) => {
+    return useSwapiPeopleList()
   }
   const transformPeopleDataToCharacter = (data: any = {}) => {
     if (!data?.results || !Array.isArray(data.results)) return []

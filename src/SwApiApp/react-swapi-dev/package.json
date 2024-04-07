@@ -1,0 +1,38 @@
+{
+  "name": "react-swapi",
+  "version": "1.0.1",
+  "description": "A comprehensive library for accessing SWAPI information",
+  "main": "../../../node_modules/react-swapi/dist/index.cjs.js",
+  "module": "../../../node_modules/react-swapi/dist/index.esm.js",
+  "author": "ryan-curtis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semperry/react-swapi.git"
+  },
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "rollup": "^3.29.4",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "terser": "^5.21.0"
+  },
+  "keywords": [
+    "swapi",
+    "hooks",
+    "react",
+    "star wars api",
+    "wrapper"
+  ]
+}

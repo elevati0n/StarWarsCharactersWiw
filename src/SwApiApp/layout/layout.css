@@ -3,7 +3,11 @@ body {
     font-family: 'Roboto Condensed', Calibri, Arial, sans-serif;
     font-size: 0.9rem;
     font-weight: 300;
-    background: black;
+    background: linear-gradient(
+            to top,
+            #283e51,
+            #000
+    );
     overflow-x: hidden;
 }
 .crawler {
@@ -13,8 +17,8 @@ body {
 }
 .main-container {
     position: relative;
-    z-index: 1;
-    background: black;
+    z-index: 3;
+    height:100%;
 }
 
 .is-loading {
@@ -28,8 +32,19 @@ body {
     border: #000 solid 2px;
     color: #fff;
     padding: 5px 24px;
+    margin: 1rem;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    font-family: 'Koulen', 'Roboto Condensed';
+    text-decoration: none;
+    background-color: #ddd;
+    border: #000 solid 2px;
+    background: rgba(130, 130, 130, 0.7);
     margin: 4px;
     font-size: 0.9rem;
+    cursor: pointer;
 }
 
 .box-assine {
@@ -69,6 +84,14 @@ body {
 }
 
 .swapi-app {
-    background:black;
+    background: linear-gradient(0deg, #283e51,
+    #0a2342 95%, black);
+    /*background:linear-gradient(*/
+    /*        to top,*/
+    /*        #283e51,*/
+    /*        #000*/
+    /*);*/
+    z-index:0;
     /*position: absolute;*/
 }
+

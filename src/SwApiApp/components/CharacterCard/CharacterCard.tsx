@@ -36,6 +36,22 @@ export const CharacterCard = ({ character }) => {
 
   return (
     <Grid item xs={2} sm={4} md={4}>
+      {showBonus ?
+        <section className={"simple-modal"}>
+            <article className={"hw-card card"} style={{background: "forestgreen"}}>
+              <header className="card-header">
+                <h2 className={"card-summary"}>{character?.name}</h2>
+                  <button className="btn" type={"button"} style={{right: "10px", top: "10px", position: "absolute"}} onClick={handleClick}>X</button>
+              </header>
+              <section className={`card-text show`}>
+                <p>
+                  {yaml.stringify(homeworld?.data)}
+                </p>
+              </section>
+            </article>
+        </section>
+        : null}
+
       <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
       <article className={"card"} style={{background: indexColors[backgroundColor]}}>
       <header className="card-header">
@@ -48,11 +64,7 @@ export const CharacterCard = ({ character }) => {
       <section className={`card-text${showDetails? " show":""}`}>
         <p>{showDetails? yaml.stringify(characterDetails): null}</p>
       </section>
-        <a href="#" onClick={handleClick}>See Homeworld Data</a>
-        {showBonus?
-          <small className={"bonus"}>
-            {yaml.stringify(homeworld?.data)}
-          </small>:null}
+        <button className={'btn'} type={'button'} onClick={handleClick}>See Homeworld Data</button>
     </article>
     </Tilt>
     </Grid>

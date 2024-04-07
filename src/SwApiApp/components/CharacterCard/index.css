@@ -14,10 +14,24 @@
     margin-bottom: 2.1rem;
     margin-left: 1.5rem;
     margin-right: -2.5rem;
+    align-content: center;
+    overflow: hidden;
 }
 
 .card-text {
+    background-color: white;
+    margin-left: -1.75rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
     opacity: 0;
+    width: 130%;
+    padding: 2rem;
+    border: #0a2342 3px solid;
+}
+.show {
+    opacity: 1;
 }
 
 .card:hover {
@@ -39,11 +53,7 @@
 }
 
 .card-summary {
-    /*position: relative;*/
-    /*display: grid;*/
-    /*grid-template-columns: 75px 1fr;*/
-    /*align-items: center;*/
-    /*margin: 3rem 0 0;*/
+
 }
 
 .half-circle {
@@ -79,9 +89,29 @@
 }
 
 .card-header h2:hover {
-    background: linear-gradient(90deg,#ff8a00,#e52e71);
     text-shadow: none;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.simple-modal {
+    position: fixed;
+    z-index: 50;
+    height: 100%;
+    width: 100%;
+    background: black;
+    top: 0;
+    left: 0;
+
+}
+.hw-card {
+    /*margin: 0 auto;*/
+    top:30%;
+    left:40%;
+    right:40%;
+    max-width:220px;
+    max-height:220px;
+    z-index: 51;
+    /*position: fixed;*/
 }

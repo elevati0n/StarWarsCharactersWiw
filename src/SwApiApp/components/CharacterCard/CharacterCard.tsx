@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Tilt from 'react-parallax-tilt';
+import Tilt from "react-parallax-tilt"
 import "./index.css"
-import { extractCharacterDetails, useSwapiContext } from "../../hooks/useSwapiContext"
+import { useSwapiContext } from "../../hooks/useSwapiContext"
 
 import yaml from "yaml"
 import { Grid } from "@mui/material"
+import { indexColors } from "./indexColors"
+
 // @ts-ignore
 export const CharacterCard = ({ character }) => {
   // flipped means its back side is up, showing details
@@ -17,11 +16,16 @@ export const CharacterCard = ({ character }) => {
   const { hooks } = useSwapiContext()
   const { useSwapiPersonById } = hooks
   const characterDetails = useSwapiPersonById(character?.uid)
+  const [backgroundColor, setBackgroundColor] = useState(0)
+
+  useEffect(() => {
+    setBackgroundColor((currentValue) => characterDetails?.colorIndex ?? currentValue)
+  }, [characterDetails])
+
   return (
     <Grid item xs={2} sm={4} md={4}>
       <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
-
-      <article className={"card"}>
+      <article className={"card"} style={{background: indexColors[backgroundColor]}}>
       <header className="card-header">
         <h2 className={"card-summary"}>{character?.name}</h2>
         <svg className="half-circle" viewBox="0 0 106 57">

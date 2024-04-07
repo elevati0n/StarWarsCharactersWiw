@@ -18,7 +18,8 @@ export const extractCharacterDetails = (data: any) => data ? ({
   dateAddedToApiFormatted: data?.created,
   // check this
   numberOfFilmsIn: data?.films?.length,
-  birthYear: data?.birth_year
+  birthYear: data?.birth_year,
+  colorIndex: Array.isArray(data?.species) && data.species.length? parseInt(data.species?.[0]?.split("/")[5])+1 : 0
 }):{}
 
 const characterSummary = (data: any) => data && data?.name ? ({

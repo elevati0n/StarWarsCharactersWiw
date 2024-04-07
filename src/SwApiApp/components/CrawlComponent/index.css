@@ -1,6 +1,6 @@
 @keyframes crawl {
     0% {
-        top: 0;
+        top: -100px;
         transform: rotateX(20deg)  translateZ(0);
     }
     75% {
@@ -25,10 +25,9 @@
     }
 }
 .crawler {
-    /*top:-40vh;*/
+    top:-30vh;
     opacity:1;
     /*height:0;*/
-    z-index: -12;
+    /*z-index: 12;*/
     position: absolute;
-    /*max-height: 300vh;*/
 }

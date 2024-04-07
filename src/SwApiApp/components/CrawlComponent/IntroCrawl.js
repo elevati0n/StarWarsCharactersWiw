@@ -13,7 +13,7 @@ export const IntroCrawl = ({disableAnimations}) => {
       maxWidth: "80",
       // left: "10%",
       position: "absolute",
-      zIndex: "-4"
+      zIndex: "-1"
     },
     fade: {
       position: "relative",
@@ -39,7 +39,7 @@ export const IntroCrawl = ({disableAnimations}) => {
     },
     crawl: {
       position: "relative",
-      top: "9999px",
+      top: "0px",
       transformOrigin: "50% 100%",
       animation: "crawl 45s ease-in-out"
     },

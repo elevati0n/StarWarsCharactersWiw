@@ -14,11 +14,13 @@ export const SwApiApp = ({children}) => {
   const swCatalog = useContext(SwApiContext)
 
   return (
-    <SwApiContext.Provider value={swCatalog} >
-      <IntroCrawl/>
-      <ActiveCardGrid/>
-      <CharacterCardGrid />
+    <SwApiContext.Provider value={swCatalog}>
+      <IntroCrawl />
+      <ActiveCardGrid />
+      <section className={"swapi-app"}>
+        <CharacterCardGrid />
         {children}
+      </section>
     </SwApiContext.Provider>
-  )
+)
 }

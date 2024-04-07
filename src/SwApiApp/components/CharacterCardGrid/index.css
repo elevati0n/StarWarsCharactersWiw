@@ -1,7 +1,11 @@
-.card {
-    box-shadow: -1rem 0 3rem #000;
-}
-
-.card:hover {
-    transform: translateY(-1rem);
+.card-list {
+    display: flex;
+    overflow: visible;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 40vh;
+    z-index:1;
+    position: relative;
+    margin-left: 15vh;
+    /*background: black;*/
 }

@@ -5,7 +5,7 @@
 import * as React from "react"
 import { SwApiApp } from "../SwApiApp"
 
-// import "./layout.css"
+import "./layout.css"
 const Layout = ({ children }) => {
   return (
       <main className={'main-container'}>

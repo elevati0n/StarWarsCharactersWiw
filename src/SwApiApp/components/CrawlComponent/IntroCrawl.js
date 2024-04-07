@@ -2,14 +2,18 @@ import * as React from "react"
 import Crawl from 'react-star-wars-crawl'
 
 // Import the necessary styles, or include them another way with your build process
-// import './index.css'
-export const IntroCrawl = () => {
+import './index.css'
+export const IntroCrawl = ({disableAnimations}) => {
   const styles = {
     container: {
       width: "100%",
       height: "100%",
       background: "#000",
-      overflow: "hidden"
+      overflow: "hidden",
+      maxWidth: "80",
+      // left: "10%",
+      position: "absolute",
+      zIndex: "-4"
     },
     fade: {
       position: "relative",
@@ -17,7 +21,7 @@ export const IntroCrawl = () => {
       minHeight: "60vh",
       top: "-25px",
       backgroundImage: "linear-gradient(0deg, transparent, black 75%)",
-      zIndex: 0
+      zIndex: -4
     },
     textContainer: {
       display: "flex",
@@ -51,7 +55,7 @@ export const IntroCrawl = () => {
   }
   return (
     <section className={"intro-section"}>
-      <Crawl
+      {!disableAnimations? <Crawl
         title={<h1>WHEN I WORK</h1>}
         subTitle={<h2>The Coding Challenge</h2>}
         containerStyles={styles.container}
@@ -67,7 +71,7 @@ export const IntroCrawl = () => {
           <p>Challenges that use a code generator (ie. Code pilot, ChatGPT) to complete the
             challenge will NOT be accepted.</p>
         </section>
-      </Crawl>
+      </Crawl>: null}
     </section>
   )
 }

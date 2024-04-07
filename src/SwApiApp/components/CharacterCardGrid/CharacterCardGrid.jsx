@@ -2,7 +2,7 @@ import * as React from "react"
 import { useSwapiContext } from "../../hooks/useSwapiContext"
 //ts-ignore
 import { CharacterCard } from "../CharacterCard/CharacterCard"
-import { Grid } from "@mui/material"
+import { Container, Grid } from "@mui/material"
 import { useEffect } from "react"
 import "./index.css"
 
@@ -16,10 +16,12 @@ export const CharacterCardGrid = () => {
   },[characterList])
 
   return (
-    <ul className={'card-list'}>
+    <Container fixed={true}>
+    <section className={'card-list'}>
         {characterList.map((character, index) =>
               <CharacterCard character={character} />
         )})
-    </ul>
+    </section>
+    </Container>
   )
 }

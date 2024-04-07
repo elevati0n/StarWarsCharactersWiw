@@ -6,7 +6,6 @@ import TagManager from 'react-gtm-module'
 import SWCatalog from "./dataStructures/SWCatalog"
 // @ts-ignore
 import { ActiveCardGrid, CharacterCardGrid, IntroCrawl } from "./components"
-import { Container } from "@mui/material"
 
 export const SwApiContext = createContext(new SWCatalog())
 const tagManagerArgs = {
@@ -21,8 +20,8 @@ export const SwApiApp = ({children}) => {
 
   return (
     <SwApiContext.Provider value={swCatalog} >
-      {/*<IntroCrawl/>*/}
-      {/*<ActiveCardGrid/>*/}
+      <IntroCrawl/>
+      <ActiveCardGrid/>
       <CharacterCardGrid />
         {children}
     </SwApiContext.Provider>

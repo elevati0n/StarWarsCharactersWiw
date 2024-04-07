@@ -1,0 +1,79 @@
+.card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: 20%;
+    min-height:400px;
+    padding: 1.5rem;
+    margin: 3rem;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, .6);
+    transition: .2s;
+    max-width: 200px;
+    z-index:2;
+}
+
+.card:hover {
+    transform: translateY(-1rem);
+    box-shadow: 18px 18px 18px 18px rgba(0, 0, 0, .4);
+    z-index: 10;
+}
+
+.card:hover~.card {
+    transform: translateX(100px);
+}
+
+
+.card:not(:first-child) {
+    margin-left: -130px;
+}
+
+.card-summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 3rem 0 0;
+}
+
+
+.half-circle {
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+    display: block;
+    border-radius: 50%;
+    filter: grayscale(100%);
+    margin: 16px 10px;
+    position: absolute;
+    top: 0;
+    right:0;
+}
+
+.card-header {
+    margin-bottom: 1rem;
+}
+
+.card-header p {
+    font-size: 14px;
+    margin: 0 0 1rem;
+    color: #7a7a8c;
+}
+
+.card-header h2 {
+    font-size: 20px;
+    margin: .25rem 0 auto;
+    cursor: pointer;
+}
+
+.card-header h2:hover {
+    background: linear-gradient(90deg,#ff8a00,#e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

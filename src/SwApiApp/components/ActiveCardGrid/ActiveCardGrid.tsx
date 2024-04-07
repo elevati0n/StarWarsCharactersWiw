@@ -1,11 +1,12 @@
 import * as React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-// import "./bb8.css"
-const Bb8Button = ()=> {
+import "./bb8.css"
+import "./index.css"
+const Bb8Button = ({onChange})=> {
   return (
     <div className={"bb8-button"}>
-      <input type="checkbox" id="bb8_cb" />
+      <input type="checkbox" id="bb8_cb" onChange={onChange} />
       <label htmlFor="bb8_cb">
         <div id="bb8">
           <div id="bb8_head">
@@ -42,9 +43,11 @@ const Bb8Button = ()=> {
 export const ActiveCardGrid = () => {
   // bb8 is in the background and behind that is the crawl and black background
   const [disableAnimations, setDisableAnimations] = useState(true)
+
+  const onChange = () => setDisableAnimations(currentValue => !currentValue)
   return (
     <>
-      <Bb8Button/>
+      <Bb8Button onChange={onChange}/>
       {!disableAnimations ? <div className="bb8">
         <div className="head"></div>
         <div className="body"></div>

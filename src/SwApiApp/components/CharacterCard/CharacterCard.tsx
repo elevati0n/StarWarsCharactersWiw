@@ -3,8 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Tilt from 'react-parallax-tilt';
-
+import "./index.css"
 import { extractCharacterDetails, useSwapiContext } from "../../hooks/useSwapiContext"
+
+import yaml from "yaml"
 // @ts-ignore
 export const CharacterCard = ({ character }) => {
   // flipped means its back side is up, showing details
@@ -14,14 +16,13 @@ export const CharacterCard = ({ character }) => {
   const { hooks } = useSwapiContext()
   const { useSwapiPersonByName } = hooks
   const characterDetails = useSwapiPersonByName(character?.name)
-
   return (
   //   <Tilt
   //   className={"parallax-effect-glare-scale "}
-  //   // perspective={2000}
+  //   perspective={2000}
   //   glareEnable={true}
-  //   // glareMaxOpacity={0.55}
-  //   // transitionSpeed={9900}
+  //   glareMaxOpacity={0.55}
+  //   transitionSpeed={9900}
   //   // makes it stay active, even if more than one (scaled)
   //   scale={1.2}
   //   reset={true}
@@ -30,17 +31,22 @@ export const CharacterCard = ({ character }) => {
   //   onLeave={() => setShowDetails(false)}
   //   flipHorizontally={isFlipped}
   // >
-    <li>
-      <h1>{character?.name}</h1>
-      <span>
-        <code>{JSON.stringify(characterDetails, null, 2)}</code>
-      </span>
-      {/*<Card raised={true} className={`card ${isFlipped ? ` is-flipped`: ""}`}>*/}
-      {/*  <CardHeader className={"inner-element card-front"} title={character?.name}/>*/}
-      {/*  {showDetails? <CardContent className={"inner-element card-back"}><code>{JSON.stringify(characterDetails, null, 2)}</code></CardContent>: null}*/}
-      {/*</Card>*/}
-    </li>
+    <article className={"card"}>
+      <header className="card-header">
+        <h2 className={"card-summary"}>{character?.name}</h2>
+        <svg className="half-circle" viewBox="0 0 106 57">
+          <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+        </svg>
+      </header>
 
-  // {/*</Tilt>*/}
+      <section className={"card-text"}>
+        <p>{yaml.stringify(characterDetails)}</p>
+      </section>
+      {/*<small className={"bonus"}>*/}
+      {/*  <a href="">See More</a>*/}
+      {/*</small>*/}
+
+    </article>
+    // </Tilt>
   )
 }

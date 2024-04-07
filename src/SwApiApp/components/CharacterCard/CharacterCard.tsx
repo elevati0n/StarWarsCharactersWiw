@@ -38,6 +38,7 @@ export const CharacterCard = ({ character }) => {
     <Grid item xs={2} sm={4} md={4}>
       {showBonus ?
         <section className={"simple-modal"}>
+        <Tilt tiltReverse={true} scale={1.5} tiltEnable={false} reset={false}>
             <article className={"hw-card card"} style={{background: "forestgreen"}}>
               <header className="card-header">
                 <h2 className={"card-summary"}>{character?.name}</h2>
@@ -49,6 +50,7 @@ export const CharacterCard = ({ character }) => {
                 </p>
               </section>
             </article>
+        </Tilt>
         </section>
         : null}
 

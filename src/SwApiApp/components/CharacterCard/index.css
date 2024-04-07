@@ -38,9 +38,6 @@
     transform: translateY(-2rem);
     box-shadow: 18px 18px 18px 18px rgba(0, 0, 0, .4);
     z-index: 10;
-    .card-text {
-        opacity: 1;
-    }
 }
 
 .card:hover~.card {
@@ -60,7 +57,6 @@
     width: 60px;
     height: 48px;
     fill: none;
-    stroke: #ff8a00;
     stroke-width: 8;
     stroke-linecap: round;
     display: block;
@@ -88,12 +84,7 @@
     cursor: pointer;
 }
 
-.card-header h2:hover {
-    text-shadow: none;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+
 
 .simple-modal {
     position: fixed;
@@ -103,15 +94,14 @@
     background: black;
     top: 0;
     left: 0;
-
 }
 .hw-card {
-    /*margin: 0 auto;*/
-    top:30%;
-    left:40%;
-    right:40%;
+    margin: 0 auto;
+    top:20vh;
+    left:20%;
+    right:20%;
     max-width:220px;
     max-height:220px;
     z-index: 51;
-    /*position: fixed;*/
+    position: fixed;
 }

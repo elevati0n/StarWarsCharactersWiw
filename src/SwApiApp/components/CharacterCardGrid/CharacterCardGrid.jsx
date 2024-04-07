@@ -13,7 +13,7 @@ export const CharacterCardGrid = () => {
   const characterList = useCharacterList()
   return (
       <Container maxWidth={"lg"} className={"card-list"}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }}>
           {Array.isArray(characterList)? characterList.map((character, index) =>
             <CharacterCard character={character} />
           ):null})

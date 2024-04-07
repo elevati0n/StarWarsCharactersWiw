@@ -53,9 +53,9 @@ export const useSwapiContext = () => {
   const useSwapiPersonById = (id = "") => {
     const { data, isLoading, error } = useSwapiResource({ resource: PEOPLE, options: { id } })
     console.log(data)
-    if (data?.message === "ok") {
-      swCatalog.getAccessMethods().addPerson({person: data?.result[0]})
-      return data?.result[0]
+    if (data?.name) {
+      swCatalog.getAccessMethods().addPerson({person: data})
+      return extractCharacterDetails(data)
     }
   }
 

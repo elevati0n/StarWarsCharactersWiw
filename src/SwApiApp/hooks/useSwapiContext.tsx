@@ -19,7 +19,9 @@ export const extractCharacterDetails = (data: any) => data ? ({
   // check this
   numberOfFilmsIn: data?.films?.length,
   birthYear: data?.birth_year,
-  colorIndex: Array.isArray(data?.species) && data.species.length? parseInt(data.species?.[0]?.split("/")[5])+1 : 0
+  // this is hacky, i am just grabbing the uid from the uri using string split
+  colorIndex: Array.isArray(data?.species) && data.species.length? parseInt(data.species?.[0]?.split("/")[5])+1 : 0,
+  homeworld:  data.homeworld.length? parseInt(data.homeworld?.split("/")[5]) : 0,
 }):{}
 
 const characterSummary = (data: any) => data && data?.name ? ({

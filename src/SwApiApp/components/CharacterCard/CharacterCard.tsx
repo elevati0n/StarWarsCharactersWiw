@@ -41,7 +41,7 @@ export const CharacterCard = ({ character }) => {
           homeworldId={characterDetails?.homeworld}/>:
         null}
       <Tilt tiltReverse={true} scale={1.25} tiltEnable={false}>
-        <article className={"card"} style={{ background: indexColors[backgroundColor] }}>
+        <article className={"card"} style={{ background: indexColors[backgroundColor+25] }}>
           <header className="card-header">
             <h2 className={"card-summary"}>{character?.name}</h2>
             <svg className="half-circle" viewBox="0 0 106 57">

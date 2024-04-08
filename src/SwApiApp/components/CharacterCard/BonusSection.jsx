@@ -20,7 +20,7 @@ export const BonusSection = ({characterName, homeworldId, handleClick}) => {
   const lookUpPlanet = useSwapiPlanetById(homeworldId)
 
   return <section className={"simple-modal"}>
-    <Tilt tiltReverse={true} scale={1.5} tiltEnable={false} reset={false}>
+    <Tilt tiltReverse={true} scale={1.25} tiltEnable={true} reset={true} perspective={99999}>
       <article className={"hw-card card"} style={{ background: indexColors[homeworldId] }}>
         <header className="card-header">
           <h2 className={"card-summary"}>{characterName}</h2>

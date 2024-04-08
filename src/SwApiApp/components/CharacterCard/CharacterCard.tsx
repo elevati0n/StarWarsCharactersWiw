@@ -15,7 +15,7 @@ const CharacterProfile = ({characterDetails}) => {
     <li> Height {parseInt(characterDetails.heightInMeters)*.01} meters</li>
     <li> Mass: {characterDetails.massInKg}kg</li>
     <li> Born: {characterDetails.birthYear} </li>
-    <li> Number of film apperances: {characterDetails.numberOfFilmsIn} </li>
+    <li> Number of film appearances: {characterDetails.numberOfFilmsIn} </li>
     <li> Date added: {characterDetails.dateAddedToApiFormatted.split("T")[0]} </li>
   </ul>
 }

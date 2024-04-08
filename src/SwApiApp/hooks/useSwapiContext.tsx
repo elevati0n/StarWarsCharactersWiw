@@ -21,7 +21,7 @@ export const extractCharacterDetails = (data: any) => data ? ({
   birthYear: data?.birth_year,
   // this is hacky, i am just grabbing the uid from the uri using string split
   colorIndex: Array.isArray(data?.species) && data.species.length? parseInt(data.species?.[0]?.split("/")[5])+1 : 0,
-  homeworld:  data.homeworld.length? parseInt(data.homeworld?.split("/")[5]) : 0,
+  homeworld:  data.homeworld.length? data.homeworld?.split("/")[5]: 0,
 }):{}
 
 const characterSummary = (data: any) => data && data?.name ? ({
@@ -48,10 +48,10 @@ export const useSwapiContext = () => {
     }
   }
 
-  const useSwapiPlanetById = (id = "21") => () => id?
-      useSwapiResource({ resource: PLANETS, options: { id: id } }):
-      () => null
-
+  const useSwapiPlanetById = (id) => {
+    // if (id) alert(id)
+    return useSwapiResource({ resource: PLANETS, options: { id: id}})
+  }
 
   const useSwapiSpeciesById = (id = "") => {
     return useSwapiResource({ resource: SPECIES, options: { id: id } })

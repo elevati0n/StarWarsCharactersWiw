@@ -8,6 +8,18 @@ import { indexColors } from "./indexColors"
 // @ts-ignore
 import { BonusSection } from "./BonusSection"
 import "./index.css"
+
+const CharacterProfile = ({characterDetails}) => {
+  return <ul>
+    {/*<li> Name: {characterDetails.name} </li>*/}
+    <li> Height {parseInt(characterDetails.heightInMeters)*.01} meters</li>
+    <li> Mass: {characterDetails.massInKg}kg</li>
+    <li> Born: {characterDetails.birthYear} </li>
+    <li> Number of film apperances: {characterDetails.numberOfFilmsIn} </li>
+    <li> Date added: {characterDetails.dateAddedToApiFormatted.split("T")[0]} </li>
+  </ul>
+}
+
 // @ts-ignore
 export const CharacterCard = ({ character }) => {
   // flipped means its back side is up, showing details
@@ -48,11 +60,11 @@ export const CharacterCard = ({ character }) => {
               <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
             </svg>
           </header>
-
           <section className={`card-text${showDetails ? " show" : ""}`}>
-            <p>{showDetails ? yaml.stringify(characterDetails) : null}</p>
+            {showDetails && characterDetails?
+              <CharacterProfile characterDetails={characterDetails}/> :null}
           </section>
-          <button className={"btn"} type={"button"} onClick={handleClick}>See Homeworld Data</button>
+          <button className={"btn"} type={"button"} onClick={handleClick}>Homeworld</button>
     </article>
     </Tilt>
     </Grid>

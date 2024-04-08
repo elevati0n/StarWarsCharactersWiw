@@ -2,6 +2,7 @@ import React from "react"
 import Tilt from "react-parallax-tilt"
 import yaml from "yaml"
 import { useSwapiContext } from "../../hooks/useSwapiContext"
+import { indexColors } from "./indexColors"
 
 export const BonusSection = ({characterName, homeworldId, handleClick}) => {
   const { hooks } = useSwapiContext()
@@ -10,7 +11,7 @@ export const BonusSection = ({characterName, homeworldId, handleClick}) => {
 
   return <section className={"simple-modal"}>
     <Tilt tiltReverse={true} scale={1.5} tiltEnable={false} reset={false}>
-      <article className={"hw-card card"} style={{ background: "forestgreen" }}>
+      <article className={"hw-card card"} style={{ background: indexColors[homeworldId] }}>
         <header className="card-header">
           <h2 className={"card-summary"}>{characterName}</h2>
           <button className="btn" type={"button"} style={{ right: "10px", top: "10px", position: "absolute" }}

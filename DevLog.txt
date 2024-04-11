@@ -1,0 +1,334 @@
+CodingChallengePlan.txt
+
+Development Log: 
+	- Receipt of Coding Challenge: 5PM EDT Wednesday 4/3/24
+	- Initial Reading, notes and questions/assumptions: 4
+	- Environment Set up Local and Netlify
+		- gatsby new StarWarsApp 
+	- deploy to netlify 6PM
+	- SWAPI working 8PM
+
+__ Information __
+
+Overview:
+This assignment should be a take-home test, and please try to time box this 3 hours or
+less. Skills tested are UI, and API integration.
+The challenge:
+Using a public API, display a list of all Star Wars characters using the endpoint
+“/people”. Star Wars character app using SWAPI - The Star Wars API Feel free to
+use external libraries to help out if you would like.
+
+For every character, we’d like to display a card
+● The API is paginated and we will want to view all characters.
+● A simple loader for fetching/refetching data as well as handling the error state.
+● Create a card for each character displaying their name.
+○ Each card should be colored based on their species.
+■ You can assign any color you would like, but it will just have to be
+consistent to the species.
+
+○ Hovering the card should show the character details:
+■ Name.
+■ Convert height to be displayed in meters.
+■ Mass in kg.
+■ Date person was added to the API (in MM-dd-yyyy format).
+■ Number of films the person appears in.
+■ Their birth year.
+
+If time allows, include the following things:
+● Make the hover details a modal.
+○ When clicking on a character’s card, more information should appear in a
+modal.
+○ Name should be the header of the modal.
+○ Add homeworld and display its name, terrain, climate, and amount of
+residents.
+
+● Animate the card when a user hovers.
+
+__
+
+Time: 3 hours
+Testing: UI, API
+Challenge: 
+- use the public API to display a list of starwars characters, from the REST endpoint "/people"
+- external libraries ARE allowed.
+
+Question:  Are external libraries allowed for the API call only? Or can I use external libraries for the UI, etc, as well?
+
+Challenge: For every character, we’d like to display a card
+● Create a card for each character displaying their name.
+
+Challenge: 
+● The API is paginated and we will want to view all characters.
+
+Challenge:
+● A simple loader for fetching/refetching data as well as handling the error state.
+
+Challenge:
+○ Each card should be colored based on their species.
+	■ You can assign any color you would like, but it will just have to be
+	consistent to the species.
+
+Challenge: 
+○ Hovering the card should show the character details:
+	■ Name.
+	■ Convert height to be displayed in meters.
+	■ Mass in kg.
+	■ Date person was added to the API (in MM-dd-yyyy format).
+	■ Number of films the person appears in.
+	■ Their birth year.
+
+Bonus Challenge: 
+If time allows, include the following things:
+● Make the hover details a modal.
+	○ When clicking on a character’s card, more information should appear in a
+	modal.
+	○ Name should be the header of the modal.
+	○ Add homeworld and display its name, terrain, climate, and amount of
+	residents.
+
+● Animate the card when a user hovers.
+_______
+
+Requirements Analysis:
+
+Function generalizing the entire project.
+
+(SimpleLoader) => (StarWarsAPI, loadingScreen, errorState)
+loadingScreen has a boolean, loadingComplete:
+	- loadingComplete == false display loading spinning circle
+	- loadingComplete == true display listOfCharacters
+
+(StarWarsAPI) => (listOfCharacters)
+note: API uses pagination, so likely will be
+(StarWarsAPI, pageNumber) => (CharacterPage), 
+so CharacterData is CharacterPage[] (a list of character pages, one page per character)
+
+
+(listOfCharacters) => (CharacterCards[])
+where CharacterCard is "A Card with the Characters Name" that is "colored based on their species."
+
+CharacterCard has: 
+	- CharacterName
+	- SpeciesColor
+
+listOfCharacters.map(character => new CharacterCard({name: character.name, color: getColorForSpecies(character.species), data: ...character}))
+
+getColorForSpecies(character.species) => SpeciesColor
+__
+
+Hovering on the card, will reveal
+	■ Name.
+	■ Convert height to be displayed in meters.
+	■ Mass in kg.
+	■ Date person was added to the API (in MM-dd-yyyy format).
+	■ Number of films the person appears in.
+	■ Their birth year.
+
+note: make sure that all data is in the required format, and if not convert it.
+
+CharacterCard is composed of 
+	- SummaryCard 
+	- DetailsCard
+
+Both SummaryCard and DetailsCard share the name field.  For the challenge without the Bonus, the CharacterCard must have the following:
+
+CharacterCard has
+	- SummaryCard
+		- color
+		- name
+	- DetailsCard
+		- height (in meters)
+		- mass (in kg)
+		- dateAddedToAPI (MM-dd-yyyy)
+		- NumberOfFilms
+		- BirthYear
+
+Bonus Challenge:
+● Make the hover details a modal.
+	○ When clicking on a character’s card, more information should appear in a
+	modal.
+	○ Name should be the header of the modal.
+	○ Add homeworld and display its name, terrain, climate, and amount of
+	residents.
+
+useModalForCardOnClick(card, clickEvent) => (CharacterModal)
+CharacterModal has:
+	- NameHeader
+	- DetailsCard
+	- HomeworldInfo
+		- name
+		- terrain
+		- climate
+		- amountOfResidents
+
+Bonus Challenge:
+● Animate the card when a user hovers.
+(CharacterCard, HoverMouseEvent) => (AnimatedCard)
+_____
+
+Devolper Questions and Assumptions:
+
+Question: Can I use external libraries ONLY for the SWAPI or as needed? (for the UI for example), namely react, material, etc.  
+
+Quote: "Using a public API, display a list of all Star Wars characters using the endpoint
+“/people”. Star Wars character app using SWAPI - The Star Wars API Feel free to
+use external libraries to help out if you would like."
+Question: 
+Are external libraries allowed for the API call only? Or can I use external libraries for the UI, etc, as well?
+Assumption: I am assuming external libraries are allowed, especially React, and will be using them to complete the challenge efficiently with the most rich amount of features in the smallest amount of time: the challenge does not specifically mention creating a website, let alone using React, just a list of character cards, but an HTML document is one of the best and most straightforward ways to achieve this and using React, etc would give the best showcase of my skills.
+
+Quote:
+ "● Create a card for each character displaying their name." "○ Hovering the card should show the character details: ■ Name." 
+Observation: Name is displayed when the card is hovered, but its also displayed when the card is not hovered.Assumption: This is intentional, looking at the bonus challenge provides framework for how this can be used cleanly.
+
+
+Quote: 
+The program should be available in a public GitHub or GitLab account with
+documentation on how to install and run it. You may also submit via
+codesandbox. Once completed, please let us know where you have chosen to
+submit.
+Assumption:
+
+ Based on previous interviewing experience, it's easier for me to just deploy the site as a React App via my Gatsby account, which also demonstrates my proficiency with the techstack.
+ It would be a better use of my time to just deploy it on Gatsby than deal with CodeSandbox.
+
+Quote: "A simple loader for fetching/refetching data as well as handling the error state." 
+Assumption:
+ I am surely allowed to use an open-source library for this.
+
+
+Plan: 
+
+Set up environment[x]
+
+Work on tested functions for the following:
+
+APICall -> listOfCharacters
+
+Evaluate Library for swapi
+
+_____
+
+Code Review of Libraries, I found two that use React
+https://github.com/finmavis/swapi-task - this one hasnt been updated in a couple years
+https://github.com/semperry/react-swapi
+https://github.com/semperry/react-swapi/blob/main/src/hooks/useSwapi.js - this looks very clean and even uses abort controller, and has some of the requirements built-in, I just need to test it.  Will be proceeding with react-swapi
+
+tested example code and library, seems to work without a hitch, including loading.  will continue to verify while continuing.
+
+-- 
+implement types for data objects: found open source library, for datatypes, created custom types for wanted program outputs (functional requirements)
+
+testing with API- 
+
+	the character API returns name and resource!! this matches characterSummary 
+	we can get characterDetails on Click / Hover!! 
+	we can do batch loading for making this faster to load!
+__
+
+
+sample data for person pull
+
+{
+  "message": "ok",
+  "total_records": 82,
+  "total_pages": 9,
+  "previous": null,
+  "next": "https://swapi.tech/api/people?page=2&limit=10",
+  "results": [
+    {
+      "uid": "1",
+      "name": "Luke Skywalker",
+      "url": "https://www.swapi.tech/api/people/1"
+    },
+    {
+      "uid": "2",
+      "name": "C-3PO",
+      "url": "https://www.swapi.tech/api/people/2"
+    },
+    {
+      "uid": "3",
+      "name": "R2-D2",
+      "url": "https://www.swapi.tech/api/people/3"
+    },
+    {
+      "uid": "4",
+      "name": "Darth Vader",
+      "url": "https://www.swapi.tech/api/people/4"
+    },
+    {
+      "uid": "5",
+      "name": "Leia Organa",
+      "url": "https://www.swapi.tech/api/people/5"
+    },
+    {
+      "uid": "6",
+      "name": "Owen Lars",
+      "url": "https://www.swapi.tech/api/people/6"
+    },
+    {
+      "uid": "7",
+      "name": "Beru Whitesun lars",
+      "url": "https://www.swapi.tech/api/people/7"
+    },
+    {
+      "uid": "8",
+      "name": "R5-D4",
+      "url": "https://www.swapi.tech/api/people/8"
+    },
+    {
+      "uid": "9",
+      "name": "Biggs Darklighter",
+      "url": "https://www.swapi.tech/api/people/9"
+    },
+    {
+      "uid": "10",
+      "name": "Obi-Wan Kenobi",
+      "url": "https://www.swapi.tech/api/people/10"
+    }
+  ]
+}
+
+
+after playing with the API, i can pull it in batches-
+
+get 1-10 and total number
+get rest or get batches of 30 or something.
+this will allow us more calls for the homeworld etc later.
+ 
+923 pm
+
+tested limit of 10 vs limit of 100, both had .3 second to .6 second ranges, with neither being consistently faster. 
+
+might as well just set limit to 500 to future proof it (unless disney goes nuts)
+
+__ 
+sample data for person
+
+data: {"message":"ok","result":{"properties":{"height":"172","mass":"77","hair_color":"blond","skin_color":"fair","eye_color":"blue","birth_year":"19BBY","gender":"male","created":"2024-04-03T19:33:43.125Z","edited":"2024-04-03T19:33:43.125Z","name":"Luke Skywalker","homeworld":"https://www.swapi.tech/api/planets/1","url":"https://www.swapi.tech/api/people/1"},"description":"A person within the Star Wars universe","_id":"5f63a36eee9fd7000499be42","uid":"1","__v":0}}
+
+planet data:
+data: {"message":"ok","result":{"properties":{"diameter":"12500","rotation_period":"24","orbital_period":"364","gravity":"1 standard","population":"2000000000","climate":"temperate","terrain":"grasslands, mountains","surface_water":"40","created":"2024-04-03T19:33:43.128Z","edited":"2024-04-03T19:33:43.128Z","name":"Alderaan","url":"https://www.swapi.tech/api/planets/2"},"description":"A planet.","_id":"5f7254c11b7dfa00041c6faf","uid":"2","__v":0}}
+
+species data:
+data: {"message":"ok","result":{"properties":{"classification":"artificial","designation":"sentient","average_height":"n/a","average_lifespan":"indefinite","hair_colors":"n/a","skin_colors":"n/a","eye_colors":"n/a","homeworld":"https://www.swapi.tech/api/planets/2","language":"n/a","people":["https://www.swapi.tech/api/people/2","https://www.swapi.tech/api/people/3","https://www.swapi.tech/api/people/8","https://www.swapi.tech/api/people/23"],"created":"2024-04-03T19:33:43.130Z","edited":"2024-04-03T19:33:43.130Z","name":"Droid","url":"https://www.swapi.tech/api/species/2"},"description":"A sepcies within the Star Wars universe","_id":"5f63a135cf50d100047f9769","uid":"2","__v":0}}
+
+films data
+data: {"message":"ok","result":{"properties":{"characters":["https://www.swapi.tech/api/people/1","https://www.swapi.tech/api/people/2","https://www.swapi.tech/api/people/3","https://www.swapi.tech/api/people/4","https://www.swapi.tech/api/people/5","https://www.swapi.tech/api/people/10","https://www.swapi.tech/api/people/13","https://www.swapi.tech/api/people/14","https://www.swapi.tech/api/people/18","https://www.swapi.tech/api/people/20","https://www.swapi.tech/api/people/21","https://www.swapi.tech/api/people/22","https://www.swapi.tech/api/people/23","https://www.swapi.tech/api/people/24","https://www.swapi.tech/api/people/25","https://www.swapi.tech/api/people/26"],"planets":["https://www.swapi.tech/api/planets/4","https://www.swapi.tech/api/planets/5","https://www.swapi.tech/api/planets/6","https://www.swapi.tech/api/planets/27"],"starships":["https://www.swapi.tech/api/starships/3","https://www.swapi.tech/api/starships/10","https://www.swapi.tech/api/starships/11","https://www.swapi.tech/api/starships/12","https://www.swapi.tech/api/starships/15","https://www.swapi.tech/api/starships/17","https://www.swapi.tech/api/starships/21","https://www.swapi.tech/api/starships/22","https://www.swapi.tech/api/starships/23"],"vehicles":["https://www.swapi.tech/api/vehicles/8","https://www.swapi.tech/api/vehicles/14","https://www.swapi.tech/api/vehicles/16","https://www.swapi.tech/api/vehicles/18","https://www.swapi.tech/api/vehicles/19","https://www.swapi.tech/api/vehicles/20"],"species":["https://www.swapi.tech/api/species/1","https://www.swapi.tech/api/species/2","https://www.swapi.tech/api/species/3","https://www.swapi.tech/api/species/6","https://www.swapi.tech/api/species/7"],"created":"2024-04-03T19:33:43.115Z","edited":"2024-04-03T19:33:43.115Z","producer":"Gary Kurtz, Rick McCallum","title":"The Empire Strikes Back","episode_id":5,"director":"Irvin Kershner","release_date":"1980-05-17","opening_crawl":"It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space....","url":"https://www.swapi.tech/api/films/2"},"description":"A Star Wars Film","_id":"5f63a117cf50d100047f9763","uid":"2","__v":0}}
+
+_____
+
+finish and refactor.  play with data and datatypes.
+__
+next day, start looking at code and libraries.  clean up context usage.
+
+__
+
+
+
+
+
+
+
+
+
